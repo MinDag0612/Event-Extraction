@@ -23,3 +23,6 @@ wheels/
 data/raw/*
 !data/raw/MAVEN-Arg/
 !data/raw/MAVEN-Arg/download.sh
+!data/raw/BKEE/
+data/raw/BKEE/*
+!data/raw/BKEE/download.sh
