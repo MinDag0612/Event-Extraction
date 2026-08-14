@@ -26,4 +26,10 @@ data/raw/*
 
 
 
+
 test.json
+=
+!data/raw/BKEE/
+data/raw/BKEE/*
+!data/raw/BKEE/download.sh
+

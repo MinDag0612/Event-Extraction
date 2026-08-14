@@ -14,6 +14,16 @@ After cloning the repository:
 uv sync
 ```
 
+Download the official BKEE processed dataset (CC BY-NC 4.0):
+
+```bash
+bash data/raw/BKEE/download.sh
+```
+
+This creates `train.json`, `dev.json`, and `test.json` under
+`data/raw/BKEE/`. The upstream files use JSON Lines format even though their
+extension is `.json`; the project loaders handle this automatically.
+
 This will create the virtual environment and install all dependencies from pyproject.toml and uv.lock.
 
 ```bash
@@ -85,4 +95,3 @@ uv sync
 ```
 
 to update their environment.
-
