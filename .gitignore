@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Raw datasets are downloaded locally and must not be committed. Keep the
+# download script so collaborators can reproduce the data setup.
+data/raw/*
+!data/raw/MAVEN-Arg/
+!data/raw/MAVEN-Arg/download.sh
