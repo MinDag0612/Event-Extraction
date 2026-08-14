@@ -28,8 +28,9 @@ class MAVENAdapter(AdapterInterface):
     def get_events(self, data: Any) -> list[Event]:
         list_events = []
         for event in data.get("events", []):
-            event_type = data.get("type", None)
-            trigger = Trigger(event.get("trigger_word", None), event.get("offset", None))
+            event_type = event.get("type", None)
+            # [Trigger(mention.get("trigger_word", None), mention.get("offset", None)) for mention in event.get("mention", [])]
+            trigger = [Trigger(mention.get("trigger_word", None), mention.get("offset", None)) for mention in event.get("mention", [])]
             arguments = self.get_argument(event["argument"])
 
             event_object = Event(event_type=event_type, trigger=trigger, arguments=arguments)

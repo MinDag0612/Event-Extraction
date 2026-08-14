@@ -6,5 +6,5 @@ from src.unified_format.trigger import Trigger
 @dataclass
 class Event:
     event_type: str
-    trigger: Trigger
+    trigger: list[Trigger] = field(default_factory=list)
     arguments: list[Argument] = field(default_factory=list)
