@@ -11,6 +11,6 @@ class EventExtractionData:
     def to_json(self) -> str:
         return json.dumps(
             asdict(self),
-            indent=4,
+            # indent=4,
             ensure_ascii=False
         )

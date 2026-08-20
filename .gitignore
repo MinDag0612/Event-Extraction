@@ -33,3 +33,7 @@ test.json
 data/raw/BKEE/*
 !data/raw/BKEE/download.sh
 
+!data/raw/GENEVA/
+data/raw/GENEVA/*
+!data/raw/GENEVA/download.py
+
