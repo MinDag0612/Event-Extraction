@@ -37,3 +37,6 @@ data/raw/BKEE/*
 data/raw/GENEVA/*
 !data/raw/GENEVA/download.py
 
+!data/raw/RAMS/
+data/raw/RAMS/*
+!data/raw/RAMS/download.py

@@ -13,13 +13,16 @@ def load_first_available_sample(project_root: Path):
         project_root / "data/raw/MAVEN-Arg/train.jsonl",
         project_root / "data/raw/MAVEN-Arg/valid.jsonl",
         project_root / "data/raw/MAVEN-Arg/test.jsonl",
+        project_root / "data/raw/RAMS/train.jsonlines",
+        project_root / "data/raw/RAMS/dev.jsonlines",
+        project_root / "data/raw/RAMS/test.jsonlines",
     ]
 
     for path in candidates:
         if not path.exists():
             continue
 
-        if path.suffix in {".json", ".jsonl"}:
+        if path.suffix in {".json", ".jsonl", ".jsonlines"}:
             with path.open("r", encoding="utf-8") as f:
                 first_line = f.readline()
                 remainder = f.read()
