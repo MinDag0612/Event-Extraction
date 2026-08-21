@@ -1,7 +1,6 @@
 from typing import Any, Dict
 from pprint import pprint
 
-
 from src.adapter.base_adapter import AdapterInterface
 from src.unified_format.event_extraction_data import EventExtractionData
 from src.unified_format.event import Event
@@ -9,6 +8,9 @@ from src.unified_format.argument import Argument
 from src.unified_format.trigger import Trigger
 
 class GENEVAAdapter(AdapterInterface):
+    def __init__(self):
+        self.events_schema = []
+    
     def adapt(self, data: Any) -> EventExtractionData:
         data_id = data["doc_id"]
         data_text = data["sentence"]
@@ -50,7 +52,7 @@ class GENEVAAdapter(AdapterInterface):
         return event_list
     
     
-    def get_schema(self):
+    def get_schema(self, ):
         pass
             
             
