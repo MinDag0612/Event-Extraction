@@ -24,6 +24,15 @@ This creates `train.json`, `dev.json`, and `test.json` under
 `data/raw/BKEE/`. The upstream files use JSON Lines format even though their
 extension is `.json`; the project loaders handle this automatically.
 
+Download the official RAMS 1.0 dataset:
+
+```bash
+uv run python data/raw/RAMS/download.py
+```
+
+This creates `train.jsonlines`, `dev.jsonlines`, and `test.jsonlines` under
+`data/raw/RAMS/`.
+
 This will create the virtual environment and install all dependencies from pyproject.toml and uv.lock.
 
 ```bash
