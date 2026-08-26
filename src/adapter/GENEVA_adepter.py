@@ -6,6 +6,7 @@ from src.unified_format.event_extraction_data import EventExtractionData
 from src.unified_format.event import Event
 from src.unified_format.argument import Argument
 from src.unified_format.trigger import Trigger
+from src.unified_format.event_schema import EventSchema
 
 class GENEVAAdapter(AdapterInterface):
     def __init__(self):
@@ -52,7 +53,5 @@ class GENEVAAdapter(AdapterInterface):
         return event_list
     
     
-    def get_schema(self, ):
+    def get_schema(self, data: Any) -> EventSchema:
         pass
-            
-            
