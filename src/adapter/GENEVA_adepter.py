@@ -7,6 +7,7 @@ from src.unified_format.event import Event
 from src.unified_format.argument import Argument
 from src.unified_format.trigger import Trigger
 from src.unified_format.event_schema import EventSchema
+from collections import defaultdict
 
 class GENEVAAdapter(AdapterInterface):
     def __init__(self):
@@ -54,4 +55,25 @@ class GENEVAAdapter(AdapterInterface):
     
     
     def get_schema(self, data: Any) -> EventSchema:
-        pass
+        mapping_events = defaultdict(list)
+        event_schema_list = []
+        
+        for row in data:
+            event_name = row.get("# Event Name", "").strip()
+            if event_name:
+                role_list = []
+                current_event = event_name
+            else:
+                is_argument_role = row.get("Is Argument Role?", "").strip()
+                if is_argument_role == "1":
+                    role = row.get("Frame Element Name", "").strip()
+
+                    if role:
+                        mapping_events[current_event].append(role)
+                        
+        for event_type, role in mapping_events.items():
+            event_schema_list.append(EventSchema(
+                event_type=event_type,
+                argument_roles=role
+            ))
+        return event_schema_list
