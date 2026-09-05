@@ -41,3 +41,7 @@ data/raw/GENEVA/*
 !data/raw/RAMS/
 data/raw/RAMS/*
 !data/raw/RAMS/download.py
+
+!data/raw/VHE/
+data/raw/VHE/*
+!data/raw/VHE/download.py
