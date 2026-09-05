@@ -3,9 +3,9 @@ from src.unified_format.event_extraction_data import EventExtractionData
 from src.unified_format.trigger import Trigger
 from src.unified_format.argument import Argument
 from src.unified_format.event import Event
+from src.unified_format.event_schema import EventSchema
 
 from typing import Any
-
 
 class VHEAdapter(AdapterInterface):
     def __init__(self):
@@ -22,6 +22,18 @@ class VHEAdapter(AdapterInterface):
             events=events
         )
         
+    def get_schema(self, data: Any) -> EventSchema:
+        type = data.get("event-type", "")
+        arguments_roles = [
+            role['role']
+            for role in data.get("role-list", [])
+        ]
+        
+        return EventSchema(
+            event_type=type,
+            argument_roles=arguments_roles
+        )
+
     # SUB-FUNCTIONS
     def get_events(self, events: list) -> list:
         event_list = []
@@ -45,7 +57,4 @@ class VHEAdapter(AdapterInterface):
             )
             event_list.append(event)
         
-        return event_list
-    
-    def get_schema(self, data: Any) -> dict:
-        pass
+        return event_list    

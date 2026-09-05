@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict
 
 from src.unified_format.event_extraction_data import EventExtractionData
+from src.unified_format.event_schema import EventSchema
 
 
 class AdapterInterface(ABC):
@@ -11,7 +12,7 @@ class AdapterInterface(ABC):
         pass
 
     @abstractmethod
-    def get_schema(self) -> Dict[str, Any]:
+    def get_schema(self) -> EventSchema:
         """Trả về schema tùy thuộc vào cách tổ chức dataset. Có thể phụ thuộc adapter nếu dataset khong có schema cố định."""
         pass
 
