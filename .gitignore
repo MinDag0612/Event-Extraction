@@ -14,6 +14,11 @@ wheels/
 
 # Virtual environments
 .venv/
+.venv-oneie/
+.venv-oneie-check/
+external/
+data/oneie/
+runs/
 .vscode/
 
 # Jupyter
