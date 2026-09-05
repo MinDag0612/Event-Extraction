@@ -27,6 +27,7 @@ class GENEVAAdapter(AdapterInterface):
         return EventExtractionData(
             id=data_id,
             text=data_text,
+            tokens=list(data["tokens"]),
             events=data_events
         )
         
@@ -39,10 +40,10 @@ class GENEVAAdapter(AdapterInterface):
             
             triggers = [
                 Trigger(text=event["trigger"]["text"],
-                        span=[event["trigger"]["start"], event["trigger"]["end"]])]
+                        span=(event["trigger"]["start"], event["trigger"]["end"]))]
             
             arguments = [
-                Argument(role=argu["role"], mentions=entities_map[argu["entity_id"]])
+                Argument(role=argu["role"], mentions=[entities_map[argu["entity_id"]]])
                 for argu in event["arguments"]]
             
             event_list.append(Event(

@@ -3,21 +3,21 @@ from pathlib import Path
 import csv
 
 BASE_URL = "https://raw.githubusercontent.com/PlusLabNLP/GENEVA/main"
-OUTPUT_DIR = Path("data/raw/GENEVA")
+OUTPUT_DIR = Path(__file__).resolve().parent
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 files = [
-    # "data/train.json",
-    # "data/val.json",
-    # "data/test.json",
+    "data/train.json",
+    "data/val.json",
+    "data/test.json",
     "meta_data/fn2geneva_mapping_annotations.tsv",
 ]
 
 for file in files:
     url = f"{BASE_URL}/{file}"
 
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     response.raise_for_status()
 
     output_path = OUTPUT_DIR / Path(file).name
@@ -37,10 +37,14 @@ with open(file_path, "r", encoding="utf-8", newline="") as f:
 header = rows[0]
 
 # Từ dòng 2 trở đi, xóa cột thứ 6 (index 5)
-data = [
-    row[:5] + row[6:]
-    for row in rows[1:]
-]
+data = []
+for row in rows[1:]:
+    # Upstream has an extra annotation-notes column absent from the header.
+    if len(row) == len(header) + 1:
+        row = row[:5] + row[6:]
+    if len(row) != len(header):
+        raise ValueError(f"Unexpected schema row width: {len(row)}")
+    data.append(row)
 
 # Ghi đè
 with open(file_path, "w", encoding="utf-8", newline="") as f:

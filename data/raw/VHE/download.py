@@ -8,14 +8,14 @@ FILES = [
     "vhe_event_schema.json",
 ]
 
-OUTPUT_DIR = Path("data/raw/VHE")
+OUTPUT_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 for filename in FILES:
     url = f"{BASE_URL}/{filename}"
     output_path = OUTPUT_DIR / filename
 
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     response.raise_for_status()
 
     output_path.write_bytes(response.content)

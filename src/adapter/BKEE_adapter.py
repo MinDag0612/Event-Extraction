@@ -36,6 +36,7 @@ class BKEEAdapter(AdapterInterface):
             ),
             text=self._as_str(self._pick(data, ["text", "sentence", "content", "document"])),
             events=self._get_events(data),
+            tokens=list(data["tokens"]),
         )
 
     def get_schema(self) -> Dict[str, Any]:
@@ -80,7 +81,7 @@ class BKEEAdapter(AdapterInterface):
             events.append(
                 Event(
                     event_type=event_type,
-                    trigger=trigger,
+                    trigger=[trigger],
                     arguments=arguments,
                 )
             )
@@ -173,24 +174,11 @@ class BKEEAdapter(AdapterInterface):
         return default
 
     def _parse_span(self, source: dict[str, Any]) -> tuple[int, int]:
-        # BKEE exposes token offsets (`start`/`end`) and character offsets
-        # (`start_char`/`end_char`). Unified spans refer to the full text, so
-        # character offsets are the unambiguous representation here.
-        start_char = source.get("start_char")
-        end_char = source.get("end_char")
-        if start_char is not None and end_char is not None:
-            return (int(start_char), int(end_char))
-
-        span = self._pick(source, ["span", "offset", "position", "trigger_span"]) 
-        if isinstance(span, (list, tuple)) and len(span) >= 2:
-            return (int(span[0]), int(span[1]))
-
-        start = self._pick(source, ["start", "start_offset", "begin"])
-        end = self._pick(source, ["end", "end_offset", "stop"])
-        if start is not None and end is not None:
-            return (int(start), int(end))
-
-        return (0, 0)
+        # Official BKEE start/end already map mentions into raw tokens.
+        # Character offsets must not be returned as unified spans.
+        if "start" not in source or "end" not in source:
+            raise ValueError("BKEE mention requires original token start/end")
+        return (int(source["start"]), int(source["end"]))
 
     def _as_str(self, value: Any) -> str:
         return "" if value is None else str(value)

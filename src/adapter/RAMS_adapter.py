@@ -10,11 +10,7 @@ from src.unified_format.trigger import Trigger
 
 
 class RAMSAdapter(AdapterInterface):
-    """Convert a RAMS 1.0 JSON Lines record to the project's unified format.
-
-    RAMS spans are document-level token offsets with an inclusive end index.
-    The adapter preserves that convention in ``span``.
-    """
+   
 
     def adapt(self, data: Any) -> EventExtractionData:
         if not isinstance(data, dict):
@@ -25,6 +21,7 @@ class RAMSAdapter(AdapterInterface):
         return EventExtractionData(
             id=str(data.get("doc_key", "")),
             text=" ".join(tokens),
+            tokens=tokens,
             events=events,
         )
 
@@ -95,7 +92,7 @@ class RAMSAdapter(AdapterInterface):
     @staticmethod
     def _span(value: Any) -> tuple[int, int]:
         if isinstance(value, (list, tuple)) and len(value) >= 2:
-            return (int(value[0]), int(value[1]))
+            return (int(value[0]), int(value[1]) + 1)
         return (0, 0)
 
     @staticmethod
@@ -103,4 +100,4 @@ class RAMSAdapter(AdapterInterface):
         start, end = span
         if start < 0 or end < start or start >= len(tokens):
             return ""
-        return " ".join(tokens[start : end + 1])
+        return " ".join(tokens[start:end])
