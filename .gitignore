@@ -45,3 +45,22 @@ data/raw/RAMS/*
 !data/raw/VHE/
 data/raw/VHE/*
 !data/raw/VHE/download.py
+
+# Local model files
+models/*/model*.safetensors
+models/*/.cache/
+
+# Qwen local checkpoint files
+models/Qwen/config.json
+models/Qwen/generation_config.json
+models/Qwen/model.safetensors.index.json
+models/Qwen/tokenizer.json
+models/Qwen/tokenizer_config.json
+
+# SeaLLM local checkpoint files
+models/seaLLm/model.safetensors
+models/seaLLm/config.json
+models/seaLLm/special_tokens_map.json
+models/seaLLm/tokenizer.json
+models/seaLLm/tokenizer.model
+models/seaLLm/tokenizer_config.json
