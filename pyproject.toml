@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "requests>=2.34.2",
+    "scikit-learn>=1.9.1",
 ]
 
 [dependency-groups]

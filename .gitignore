@@ -45,3 +45,14 @@ data/raw/RAMS/*
 !data/raw/VHE/
 data/raw/VHE/*
 !data/raw/VHE/download.py
+
+data/processed/VHE/
+data/processed/GENEVA/
+
+# Local datasets and model weights are not committed.
+data/*
+!data/raw/
+!data/raw/**/
+!data/raw/**/download.sh
+!data/raw/**/download.py
+models/
