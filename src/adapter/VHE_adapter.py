@@ -16,7 +16,7 @@ class VHEAdapter(AdapterInterface):
         event_id = data.get("id", "")
         text = data.get("text", "")
         tokens, offsets = tokenize_with_offsets(text)
-        events = self.get_events(data.get("events", []), text, offsets)
+        events = self.get_events(data.get("events", []), text, offsets, event_id)
 
         return EventExtractionData(
             id=event_id,
@@ -38,26 +38,38 @@ class VHEAdapter(AdapterInterface):
         )
 
     # SUB-FUNCTIONS
-    def get_events(self, events: list, text: str, offsets: list) -> list:
+    def get_events(self, events: list, text: str, offsets: list, event_id: str) -> list:
         event_list = []
+        count_invalid_spans = 0
+        invalid_spans = []
 
         for event in events:
             event_type = event.get("type", "")
-            trigger = [
-                Trigger(text=event["trigger_word"], span=char_to_token_span(text, offsets, event["offset"]))
-            ]
-            arguments = [
-                Argument(role=arg["role"], mentions=[
-                    {"text": arg["mention"], "span": char_to_token_span(text, offsets, arg["offset"])}
-                ])
-                for arg in event.get("arguments", [])
+            try: 
+                trigger = [
+                    Trigger(text=event["trigger_word"], span=char_to_token_span(text, offsets, event["offset"]))
                 ]
+                arguments = [
+                    Argument(role=arg["role"], mentions=[
+                        {"text": arg["mention"], "span": char_to_token_span(text, offsets, arg["offset"])}
+                    ])
+                    for arg in event.get("arguments", [])
+                    ]
 
-            event = Event(
-                event_type=event_type,
-                trigger=trigger,
-                arguments=arguments
-            )
-            event_list.append(event)
+                event = Event(
+                    event_type=event_type,
+                    trigger=trigger,
+                    arguments=arguments
+                )
+                event_list.append(event)
+            
+            except ValueError as e:
+                count_invalid_spans += 1
+                invalid_spans.append(str(e))
+                continue  # Skip events with invalid spans
+        
+        if count_invalid_spans > 0:
+            print(f"Event {event_id} has {count_invalid_spans} invalid spans. This event has been skipped.")
+            print(f"Invalid spans for event {event_id}: {invalid_spans}")
 
         return event_list
