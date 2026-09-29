@@ -1,0 +1,19 @@
+{
+  "reports/oneie_four_datasets/evidence/BKEE/log.txt": "6fbb8e0ee1fba542b47aebfdd2ecbf80594936062d013d91b65f67341d8a8349",
+  "reports/oneie_four_datasets/evidence/BKEE/preparation_report.json": "996cc63bd18a03bb5476b4ac5db5fa07cf50e4f151c52e2ecb4343484744676a",
+  "data/raw/BKEE/train.json": "6c60bcc71e9d19e4431751f36263b542dd5c1d839b9fb933e7eb4ca2f0edc382",
+  "data/raw/BKEE/dev.json": "cae819ea5590174bb874e8b64ae1d3f397f5cc8074df871bf2022b9c0b8f26f7",
+  "data/raw/BKEE/test.json": "abd613fe2838942396d661b01c485c3e7e219e9b082175e2a0344282852a0e5e",
+  "reports/oneie_four_datasets/evidence/VHE/log.txt": "f63405861d2df7edb774068b007f6a82bfd70ab76ee677f8fc301dc6bfc7af01",
+  "reports/oneie_four_datasets/evidence/VHE/full_gold_scores.json": "6d30994c70a53bc119e64c1197fbae4579ba85214dbb7d9ad2a656a83d00761d",
+  "reports/oneie_four_datasets/evidence/VHE/conversion_report.json": "ba2bc03fbc3dd8a7bdfae388394a27bd791f8eeddce61ebe39334314f449201d",
+  "reports/oneie_four_datasets/evidence/VHE/preparation_report.json": "17f0911d05c27854867393a35d5371b6fe3375fe804b2ffdfa9a0f0a7a404330",
+  "reports/oneie_four_datasets/evidence/PHEE/log.txt": "914162517e5912e2a8b0c3dd835c941646c18a1604162a8f8016d0340de45e74",
+  "reports/oneie_four_datasets/evidence/PHEE/full_gold_scores.json": "eb7ae3aa6bef2edf476695831c772a65535ee7b816b9b6207d12d7107f278d12",
+  "reports/oneie_four_datasets/evidence/PHEE/conversion_report.json": "0c7b4eba2aef8e9ca6bfc7486ab9797236af95bd71935add85d969376faf2e42",
+  "reports/oneie_four_datasets/evidence/PHEE/preparation_report.json": "63d129e26cbb8445b2aad3eed86a94395a28590a09ec388da1cf4bd065f4d37f",
+  "reports/oneie_four_datasets/evidence/GENEVA/log.txt": "0f3efbbd0fd9599adba852e3892f7f0015d94c115bc03a4a851a37e2a8d9478c",
+  "reports/oneie_four_datasets/evidence/GENEVA/full_gold_scores.json": "26f30f0c35ade3cbab4a94c93b35dd8a48c4dde97cab430bf6ccf329b2ab84c2",
+  "reports/oneie_four_datasets/evidence/GENEVA/conversion_report.json": "413111a5db9f6c3aa7558d99edcfb0bbee93a2e305123c15ab839798f5dc172d",
+  "reports/oneie_four_datasets/evidence/GENEVA/preparation_report.json": "eacbd59b93ce30db32abb54c5bb01a97f37dec9238fa3323c86186a396c3db42"
+}

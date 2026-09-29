@@ -45,3 +45,11 @@ data/raw/RAMS/*
 !data/raw/VHE/
 data/raw/VHE/*
 !data/raw/VHE/download.py
+
+# Local Kaggle credentials and deployment artifacts
+/EE.md
+/.kaggle-deploy/
+
+!data/raw/PHEE/
+data/raw/PHEE/*
+!data/raw/PHEE/download.py

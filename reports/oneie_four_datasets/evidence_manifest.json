@@ -1,0 +1,92 @@
+[
+  {
+    "source": ".kaggle-deploy/archive/BKEE/oneie-bkee/runs/20260920_141457/log.txt",
+    "copy": "evidence/BKEE/log.txt",
+    "sha256": "6fbb8e0ee1fba542b47aebfdd2ecbf80594936062d013d91b65f67341d8a8349"
+  },
+  {
+    "source": ".kaggle-deploy/archive/BKEE/audit.json",
+    "copy": "evidence/BKEE/audit.json",
+    "sha256": "22d8df9f75d01d07f9ded03f34e884093789e9995ccffd58ab3442b61eaf5422"
+  },
+  {
+    "source": ".kaggle-deploy/archive/BKEE/oneie-bkee/data/preparation_report.json",
+    "copy": "evidence/BKEE/preparation_report.json",
+    "sha256": "996cc63bd18a03bb5476b4ac5db5fa07cf50e4f151c52e2ecb4343484744676a"
+  },
+  {
+    "source": ".kaggle-deploy/archive/VHE/oneie-vhe/runs/20260923_172443/log.txt",
+    "copy": "evidence/VHE/log.txt",
+    "sha256": "f63405861d2df7edb774068b007f6a82bfd70ab76ee677f8fc301dc6bfc7af01"
+  },
+  {
+    "source": ".kaggle-deploy/archive/VHE/oneie-vhe/runs/20260923_172443/full_gold_scores.json",
+    "copy": "evidence/VHE/full_gold_scores.json",
+    "sha256": "6d30994c70a53bc119e64c1197fbae4579ba85214dbb7d9ad2a656a83d00761d"
+  },
+  {
+    "source": ".kaggle-deploy/multi/VHE/native/conversion_report.json",
+    "copy": "evidence/VHE/conversion_report.json",
+    "sha256": "ba2bc03fbc3dd8a7bdfae388394a27bd791f8eeddce61ebe39334314f449201d"
+  },
+  {
+    "source": ".kaggle-deploy/multi/VHE/native/split_manifest.json",
+    "copy": "evidence/VHE/split_manifest.json",
+    "sha256": "32ec5873f94ff23369f801f7a81aba22c9a1a7d12a857dad224c1c3a59fe1c18"
+  },
+  {
+    "source": ".kaggle-deploy/multi/VHE/prepared/preparation_report.json",
+    "copy": "evidence/VHE/preparation_report.json",
+    "sha256": "17f0911d05c27854867393a35d5371b6fe3375fe804b2ffdfa9a0f0a7a404330"
+  },
+  {
+    "source": ".kaggle-deploy/archive/PHEE/oneie-phee/runs/20260923_172040/log.txt",
+    "copy": "evidence/PHEE/log.txt",
+    "sha256": "914162517e5912e2a8b0c3dd835c941646c18a1604162a8f8016d0340de45e74"
+  },
+  {
+    "source": ".kaggle-deploy/archive/PHEE/oneie-phee/runs/20260923_172040/full_gold_scores.json",
+    "copy": "evidence/PHEE/full_gold_scores.json",
+    "sha256": "eb7ae3aa6bef2edf476695831c772a65535ee7b816b9b6207d12d7107f278d12"
+  },
+  {
+    "source": ".kaggle-deploy/multi/PHEE/native/conversion_report.json",
+    "copy": "evidence/PHEE/conversion_report.json",
+    "sha256": "0c7b4eba2aef8e9ca6bfc7486ab9797236af95bd71935add85d969376faf2e42"
+  },
+  {
+    "source": ".kaggle-deploy/multi/PHEE/native/split_manifest.json",
+    "copy": "evidence/PHEE/split_manifest.json",
+    "sha256": "7ecd430396a271ef54b0e4db6d84a4c616c630af75e71f5df36612c975fda2fd"
+  },
+  {
+    "source": ".kaggle-deploy/multi/PHEE/prepared/preparation_report.json",
+    "copy": "evidence/PHEE/preparation_report.json",
+    "sha256": "63d129e26cbb8445b2aad3eed86a94395a28590a09ec388da1cf4bd065f4d37f"
+  },
+  {
+    "source": ".kaggle-deploy/archive/GENEVA/oneie-geneva/runs/20260924_031951/log.txt",
+    "copy": "evidence/GENEVA/log.txt",
+    "sha256": "0f3efbbd0fd9599adba852e3892f7f0015d94c115bc03a4a851a37e2a8d9478c"
+  },
+  {
+    "source": ".kaggle-deploy/archive/GENEVA/oneie-geneva/runs/20260924_031951/full_gold_scores.json",
+    "copy": "evidence/GENEVA/full_gold_scores.json",
+    "sha256": "26f30f0c35ade3cbab4a94c93b35dd8a48c4dde97cab430bf6ccf329b2ab84c2"
+  },
+  {
+    "source": ".kaggle-deploy/multi/GENEVA/native/conversion_report.json",
+    "copy": "evidence/GENEVA/conversion_report.json",
+    "sha256": "413111a5db9f6c3aa7558d99edcfb0bbee93a2e305123c15ab839798f5dc172d"
+  },
+  {
+    "source": ".kaggle-deploy/multi/GENEVA/native/split_manifest.json",
+    "copy": "evidence/GENEVA/split_manifest.json",
+    "sha256": "0a76c283c64357683e4ae062f1313c7c3c23fe260ca97935c3fdf0cfe8b0dfae"
+  },
+  {
+    "source": ".kaggle-deploy/multi/GENEVA/prepared/preparation_report.json",
+    "copy": "evidence/GENEVA/preparation_report.json",
+    "sha256": "eacbd59b93ce30db32abb54c5bb01a97f37dec9238fa3323c86186a396c3db42"
+  }
+]

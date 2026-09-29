@@ -1,0 +1,54 @@
+{
+  "BKEE": {
+    "path": ".kaggle-deploy/archive/BKEE/oneie-bkee/runs/20260920_141457/best.role.mdl",
+    "bytes": 727109387,
+    "sha256": "f5a50733592501fee132507866371a5e428dc1a238518581ff9426c46ceeb0f0",
+    "cpu_load": "PASS",
+    "model_tensors_finite": true,
+    "tensor_count": 227,
+    "selected_epoch_from_log": 30,
+    "config_present": true,
+    "vocabs_present": true,
+    "constraints_present": true,
+    "inference_replayed": false
+  },
+  "PHEE": {
+    "path": ".kaggle-deploy/archive/PHEE/oneie-phee/runs/20260923_172040/best.role.mdl",
+    "bytes": 726386379,
+    "sha256": "1e545f9c899a2f452c76d45c9cf5b1f4e42367ae689c3370eddd57d4a2edfb6a",
+    "cpu_load": "PASS",
+    "model_tensors_finite": true,
+    "tensor_count": 227,
+    "selected_epoch_from_log": 13,
+    "config_present": true,
+    "vocabs_present": true,
+    "constraints_present": true,
+    "inference_replayed": false
+  },
+  "GENEVA": {
+    "path": ".kaggle-deploy/archive/GENEVA/oneie-geneva/runs/20260924_031951/best.role.mdl",
+    "bytes": 729374603,
+    "sha256": "e5e7f8d7ec753333180cbfffaa4a419f67c101101a1f5e0b0adf008fd3e1258f",
+    "cpu_load": "PASS",
+    "model_tensors_finite": true,
+    "tensor_count": 227,
+    "selected_epoch_from_log": 29,
+    "config_present": true,
+    "vocabs_present": true,
+    "constraints_present": true,
+    "inference_replayed": false
+  },
+  "VHE": {
+    "path": ".kaggle-deploy/archive/VHE/oneie-vhe/runs/20260923_172443/best.role.mdl",
+    "bytes": 726899147,
+    "sha256": "6994ac7b973a7049d306ff1afff69110bd9f7a8142f4b11ad76405ae0a5c8755",
+    "cpu_load": "PASS",
+    "model_tensors_finite": true,
+    "tensor_count": 227,
+    "selected_epoch_from_log": 27,
+    "config_present": true,
+    "vocabs_present": true,
+    "constraints_present": true,
+    "inference_replayed": false
+  }
+}

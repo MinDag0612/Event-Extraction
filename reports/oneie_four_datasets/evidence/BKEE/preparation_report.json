@@ -1,0 +1,24 @@
+{
+  "model": "bert-base-multilingual-cased",
+  "max_length": 512,
+  "splits": {
+    "train": {
+      "total": 10959,
+      "kept": 10959,
+      "overlength_ids": [],
+      "overlapping_entity_sentences": 0
+    },
+    "dev": {
+      "total": 4301,
+      "kept": 4301,
+      "overlength_ids": [],
+      "overlapping_entity_sentences": 2
+    },
+    "test": {
+      "total": 3736,
+      "kept": 3736,
+      "overlength_ids": [],
+      "overlapping_entity_sentences": 1
+    }
+  }
+}

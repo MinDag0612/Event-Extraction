@@ -1,0 +1,690 @@
+{
+  "scope": "Re-scoring saved predictions and CPU loading four best checkpoints; no inference replay or last checkpoint validation",
+  "datasets": {
+    "BKEE": {
+      "completed_epochs": 30,
+      "best_epoch": 30,
+      "archived_log_matches_report": true,
+      "scorer_sha256": "c321f4a5e301accf925a55454cb33933f535f9ffb71df0d0a18a36edcb3f9463",
+      "splits": {
+        "dev": {
+          "sentences": 4301,
+          "missing_predictions": 0,
+          "duplicate_ids": 0,
+          "tokens_and_spans_valid": true,
+          "max_metric_difference_vs_log": 0.0,
+          "recomputed_scores": {
+            "entity": {
+              "prec": 0.49528894472361806,
+              "rec": 0.5500523194977328,
+              "f": 0.5212361593125103
+            },
+            "mention": {
+              "prec": 0.5179020100502513,
+              "rec": 0.5751656784094873,
+              "f": 0.5450338786977359
+            },
+            "trigger": {
+              "prec": 0.5623298856831791,
+              "rec": 0.5950460829493087,
+              "f": 0.5782255807444724
+            },
+            "trigger_id": {
+              "prec": 0.5851932498639085,
+              "rec": 0.6192396313364056,
+              "f": 0.6017352364959417
+            },
+            "role": {
+              "prec": 0.4683420365535248,
+              "rec": 0.4645516348332794,
+              "f": 0.4664391353811149
+            },
+            "role_id": {
+              "prec": 0.4977154046997389,
+              "rec": 0.49368727743606344,
+              "f": 0.4956931578091987
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          },
+          "prediction_sha256": "21f85783718d02a26294eb0bc0a252301d38382c97b2f96dde84e0f5aa7cff49"
+        },
+        "test": {
+          "sentences": 3736,
+          "missing_predictions": 0,
+          "duplicate_ids": 0,
+          "tokens_and_spans_valid": true,
+          "max_metric_difference_vs_log": 0.0,
+          "recomputed_scores": {
+            "entity": {
+              "prec": 0.5216016859852476,
+              "rec": 0.56442417331813,
+              "f": 0.5421686746987951
+            },
+            "mention": {
+              "prec": 0.5458377239199157,
+              "rec": 0.5906499429874572,
+              "f": 0.5673603504928806
+            },
+            "trigger": {
+              "prec": 0.5950255102040817,
+              "rec": 0.6187002652519894,
+              "f": 0.6066319895968791
+            },
+            "trigger_id": {
+              "prec": 0.6141581632653061,
+              "rec": 0.6385941644562334,
+              "f": 0.6261378413524058
+            },
+            "role": {
+              "prec": 0.5103703703703704,
+              "rec": 0.49056603773584906,
+              "f": 0.5002722817208205
+            },
+            "role_id": {
+              "prec": 0.5351851851851852,
+              "rec": 0.5144179423282307,
+              "f": 0.5245961154474497
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          },
+          "prediction_sha256": "ccb2f6173854a20223c66a04336fedbad61fc11f2e1b88d7e14386f94a78a948"
+        }
+      },
+      "checkpoints": {
+        "best.role.mdl": {
+          "path": ".kaggle-deploy/archive/BKEE/oneie-bkee/runs/20260920_141457/best.role.mdl",
+          "bytes": 727109387,
+          "sha256": "f5a50733592501fee132507866371a5e428dc1a238518581ff9426c46ceeb0f0",
+          "cpu_load": "PASS",
+          "model_tensors_finite": true,
+          "tensor_count": 227,
+          "selected_epoch_from_log": 30,
+          "config_present": true,
+          "vocabs_present": true,
+          "constraints_present": true,
+          "inference_replayed": false
+        }
+      },
+      "status": "SCORES_AND_BEST_CHECKPOINT_PASS"
+    },
+    "VHE": {
+      "completed_epochs": 30,
+      "best_epoch": 27,
+      "archived_log_matches_report": true,
+      "scorer_sha256": "c321f4a5e301accf925a55454cb33933f535f9ffb71df0d0a18a36edcb3f9463",
+      "splits": {
+        "dev": {
+          "sentences": 412,
+          "missing_predictions": 0,
+          "duplicate_ids": 0,
+          "tokens_and_spans_valid": true,
+          "max_metric_difference_vs_log": 0.0,
+          "recomputed_scores": {
+            "entity": {
+              "prec": 0.799083269671505,
+              "rec": 0.8321400159108989,
+              "f": 0.8152766952455184
+            },
+            "mention": {
+              "prec": 0.799083269671505,
+              "rec": 0.8321400159108989,
+              "f": 0.8152766952455184
+            },
+            "trigger": {
+              "prec": 0.7609561752988048,
+              "rec": 0.71939736346516,
+              "f": 0.7395934172313648
+            },
+            "trigger_id": {
+              "prec": 0.7808764940239044,
+              "rec": 0.7382297551789078,
+              "f": 0.7589545014520814
+            },
+            "role": {
+              "prec": 0.7103386809269162,
+              "rec": 0.613548883756736,
+              "f": 0.6584056175134242
+            },
+            "role_id": {
+              "prec": 0.7486631016042781,
+              "rec": 0.6466512702078522,
+              "f": 0.6939281288723668
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          },
+          "prediction_sha256": "9bae79b875ec77f961609823c6aa9e56a87e55492a904bf95a2636b75bc9898f",
+          "full_gold_max_difference": 0.0,
+          "full_gold_scores": {
+            "entity": {
+              "prec": 0.7998472116119175,
+              "rec": 0.830952380952381,
+              "f": 0.8151031529778123
+            },
+            "mention": {
+              "prec": 0.7998472116119175,
+              "rec": 0.830952380952381,
+              "f": 0.8151031529778123
+            },
+            "trigger": {
+              "prec": 0.7629482071713147,
+              "rec": 0.7118959107806692,
+              "f": 0.7365384615384616
+            },
+            "trigger_id": {
+              "prec": 0.7828685258964143,
+              "rec": 0.7304832713754646,
+              "f": 0.7557692307692307
+            },
+            "role": {
+              "prec": 0.7112299465240641,
+              "rec": 0.6086956521739131,
+              "f": 0.655980271270037
+            },
+            "role_id": {
+              "prec": 0.750445632798574,
+              "rec": 0.6422578184591915,
+              "f": 0.6921496095355529
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          }
+        },
+        "test": {
+          "sentences": 410,
+          "missing_predictions": 0,
+          "duplicate_ids": 0,
+          "tokens_and_spans_valid": true,
+          "max_metric_difference_vs_log": 0.0,
+          "recomputed_scores": {
+            "entity": {
+              "prec": 0.7629744384198296,
+              "rec": 0.7949959644874899,
+              "f": 0.7786561264822134
+            },
+            "mention": {
+              "prec": 0.7629744384198296,
+              "rec": 0.7949959644874899,
+              "f": 0.7786561264822134
+            },
+            "trigger": {
+              "prec": 0.7464788732394366,
+              "rec": 0.7162162162162162,
+              "f": 0.7310344827586208
+            },
+            "trigger_id": {
+              "prec": 0.7766599597585513,
+              "rec": 0.7451737451737451,
+              "f": 0.7605911330049261
+            },
+            "role": {
+              "prec": 0.6706204379562044,
+              "rec": 0.5875299760191847,
+              "f": 0.6263314870046869
+            },
+            "role_id": {
+              "prec": 0.7125912408759124,
+              "rec": 0.6243005595523581,
+              "f": 0.6655304644226673
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          },
+          "prediction_sha256": "be4a4e98ab805070a2b208f0657b8d3447e56b3d2a5d5f44659c03b028e69d29",
+          "full_gold_max_difference": 0.0,
+          "full_gold_scores": {
+            "entity": {
+              "prec": 0.7683965917893106,
+              "rec": 0.7929656274980016,
+              "f": 0.7804878048780488
+            },
+            "mention": {
+              "prec": 0.7683965917893106,
+              "rec": 0.7929656274980016,
+              "f": 0.7804878048780488
+            },
+            "trigger": {
+              "prec": 0.7525150905432596,
+              "rec": 0.6977611940298507,
+              "f": 0.7241045498547919
+            },
+            "trigger_id": {
+              "prec": 0.7826961770623743,
+              "rec": 0.7257462686567164,
+              "f": 0.7531461761858664
+            },
+            "role": {
+              "prec": 0.6751824817518248,
+              "rec": 0.5736434108527132,
+              "f": 0.6202849958088852
+            },
+            "role_id": {
+              "prec": 0.718978102189781,
+              "rec": 0.6108527131782946,
+              "f": 0.6605196982397318
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          }
+        }
+      },
+      "checkpoints": {
+        "best.role.mdl": {
+          "path": ".kaggle-deploy/archive/VHE/oneie-vhe/runs/20260923_172443/best.role.mdl",
+          "bytes": 726899147,
+          "sha256": "6994ac7b973a7049d306ff1afff69110bd9f7a8142f4b11ad76405ae0a5c8755",
+          "cpu_load": "PASS",
+          "model_tensors_finite": true,
+          "tensor_count": 227,
+          "selected_epoch_from_log": 27,
+          "config_present": true,
+          "vocabs_present": true,
+          "constraints_present": true,
+          "inference_replayed": false
+        }
+      },
+      "status": "SCORES_AND_BEST_CHECKPOINT_PASS"
+    },
+    "PHEE": {
+      "completed_epochs": 30,
+      "best_epoch": 13,
+      "archived_log_matches_report": true,
+      "scorer_sha256": "c321f4a5e301accf925a55454cb33933f535f9ffb71df0d0a18a36edcb3f9463",
+      "splits": {
+        "dev": {
+          "sentences": 961,
+          "missing_predictions": 0,
+          "duplicate_ids": 0,
+          "tokens_and_spans_valid": true,
+          "max_metric_difference_vs_log": 0.0,
+          "recomputed_scores": {
+            "entity": {
+              "prec": 0.7490909090909091,
+              "rec": 0.752035944959281,
+              "f": 0.7505605381165918
+            },
+            "mention": {
+              "prec": 0.7490909090909091,
+              "rec": 0.752035944959281,
+              "f": 0.7505605381165918
+            },
+            "trigger": {
+              "prec": 0.6627450980392157,
+              "rec": 0.6773547094188377,
+              "f": 0.669970267591675
+            },
+            "trigger_id": {
+              "prec": 0.6764705882352942,
+              "rec": 0.6913827655310621,
+              "f": 0.6838453914767095
+            },
+            "role": {
+              "prec": 0.6501529051987768,
+              "rec": 0.5955182072829132,
+              "f": 0.6216374269005848
+            },
+            "role_id": {
+              "prec": 0.7085626911314985,
+              "rec": 0.6490196078431373,
+              "f": 0.6774853801169591
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          },
+          "prediction_sha256": "d3252ddc18e1d066668381481a898faab227f7fe85216299cbadcbb28b004fce",
+          "full_gold_max_difference": 0.0,
+          "full_gold_scores": {
+            "entity": {
+              "prec": 0.76,
+              "rec": 0.6053921568627451,
+              "f": 0.6739427012278308
+            },
+            "mention": {
+              "prec": 0.76,
+              "rec": 0.6053921568627451,
+              "f": 0.6739427012278308
+            },
+            "trigger": {
+              "prec": 0.6627450980392157,
+              "rec": 0.6739780658025922,
+              "f": 0.6683143845773605
+            },
+            "trigger_id": {
+              "prec": 0.6764705882352942,
+              "rec": 0.6879361914257228,
+              "f": 0.6821552150271873
+            },
+            "role": {
+              "prec": 0.671559633027523,
+              "rec": 0.4056150720354636,
+              "f": 0.5057577153385537
+            },
+            "role_id": {
+              "prec": 0.7220183486238532,
+              "rec": 0.4360916143332102,
+              "f": 0.5437586365730077
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          }
+        },
+        "test": {
+          "sentences": 968,
+          "missing_predictions": 0,
+          "duplicate_ids": 0,
+          "tokens_and_spans_valid": true,
+          "max_metric_difference_vs_log": 0.0,
+          "recomputed_scores": {
+            "entity": {
+              "prec": 0.7479247371333703,
+              "rec": 0.7421746293245469,
+              "f": 0.7450385887541345
+            },
+            "mention": {
+              "prec": 0.7479247371333703,
+              "rec": 0.7421746293245469,
+              "f": 0.7450385887541345
+            },
+            "trigger": {
+              "prec": 0.6510263929618768,
+              "rec": 0.6620278330019881,
+              "f": 0.6564810251355347
+            },
+            "trigger_id": {
+              "prec": 0.6598240469208211,
+              "rec": 0.6709741550695825,
+              "f": 0.6653523903400689
+            },
+            "role": {
+              "prec": 0.6609416641989931,
+              "rec": 0.6131868131868132,
+              "f": 0.6361693031209918
+            },
+            "role_id": {
+              "prec": 0.7177968611193367,
+              "rec": 0.6659340659340659,
+              "f": 0.6908935442496793
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          },
+          "prediction_sha256": "10fc6a2ec3d166a0477baac787a9c430edd1754f2141641f94cf587e04655ba5",
+          "full_gold_max_difference": 0.0,
+          "full_gold_scores": {
+            "entity": {
+              "prec": 0.7589928057553957,
+              "rec": 0.6028571428571429,
+              "f": 0.6719745222929937
+            },
+            "mention": {
+              "prec": 0.7589928057553957,
+              "rec": 0.6028571428571429,
+              "f": 0.6719745222929937
+            },
+            "trigger": {
+              "prec": 0.6510263929618768,
+              "rec": 0.6594059405940594,
+              "f": 0.6551893753074274
+            },
+            "trigger_id": {
+              "prec": 0.6598240469208211,
+              "rec": 0.6683168316831684,
+              "f": 0.6640432857845548
+            },
+            "role": {
+              "prec": 0.6769321883328397,
+              "rec": 0.42037513791835235,
+              "f": 0.5186613726602382
+            },
+            "role_id": {
+              "prec": 0.7308261770802488,
+              "rec": 0.453843324751747,
+              "f": 0.559954622802042
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          }
+        }
+      },
+      "checkpoints": {
+        "best.role.mdl": {
+          "path": ".kaggle-deploy/archive/PHEE/oneie-phee/runs/20260923_172040/best.role.mdl",
+          "bytes": 726386379,
+          "sha256": "1e545f9c899a2f452c76d45c9cf5b1f4e42367ae689c3370eddd57d4a2edfb6a",
+          "cpu_load": "PASS",
+          "model_tensors_finite": true,
+          "tensor_count": 227,
+          "selected_epoch_from_log": 13,
+          "config_present": true,
+          "vocabs_present": true,
+          "constraints_present": true,
+          "inference_replayed": false
+        }
+      },
+      "status": "SCORES_AND_BEST_CHECKPOINT_PASS"
+    },
+    "GENEVA": {
+      "completed_epochs": 30,
+      "best_epoch": 29,
+      "archived_log_matches_report": true,
+      "scorer_sha256": "c321f4a5e301accf925a55454cb33933f535f9ffb71df0d0a18a36edcb3f9463",
+      "splits": {
+        "dev": {
+          "sentences": 783,
+          "missing_predictions": 0,
+          "duplicate_ids": 0,
+          "tokens_and_spans_valid": true,
+          "max_metric_difference_vs_log": 0.0,
+          "recomputed_scores": {
+            "entity": {
+              "prec": 0.5840415486307837,
+              "rec": 0.6456158663883089,
+              "f": 0.6132870599900843
+            },
+            "mention": {
+              "prec": 0.5840415486307837,
+              "rec": 0.6456158663883089,
+              "f": 0.6132870599900843
+            },
+            "trigger": {
+              "prec": 0.786774628879892,
+              "rec": 0.8085991678224688,
+              "f": 0.7975376196990422
+            },
+            "trigger_id": {
+              "prec": 0.8218623481781376,
+              "rec": 0.8446601941747572,
+              "f": 0.8331053351573187
+            },
+            "role": {
+              "prec": 0.4330587023686921,
+              "rec": 0.4126594700686948,
+              "f": 0.4226130653266332
+            },
+            "role_id": {
+              "prec": 0.48146240988671474,
+              "rec": 0.45878312070657506,
+              "f": 0.4698492462311558
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          },
+          "prediction_sha256": "59a833c0bdb9cc8d9fabb04cbc825a49655dcf45266ffbdaf4aa60de4169e2d7",
+          "full_gold_max_difference": 0.0,
+          "full_gold_scores": {
+            "entity": {
+              "prec": 0.7233238904627006,
+              "rec": 0.20666396870362877,
+              "f": 0.3214772846500892
+            },
+            "mention": {
+              "prec": 0.7233238904627006,
+              "rec": 0.20666396870362877,
+              "f": 0.3214772846500892
+            },
+            "trigger": {
+              "prec": 0.786774628879892,
+              "rec": 0.8085991678224688,
+              "f": 0.7975376196990422
+            },
+            "trigger_id": {
+              "prec": 0.8218623481781376,
+              "rec": 0.8446601941747572,
+              "f": 0.8331053351573187
+            },
+            "role": {
+              "prec": 0.44490216271884653,
+              "rec": 0.36378947368421055,
+              "f": 0.4002779708130646
+            },
+            "role_id": {
+              "prec": 0.49588053553038103,
+              "rec": 0.4054736842105263,
+              "f": 0.44614315496872825
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          }
+        },
+        "test": {
+          "sentences": 933,
+          "missing_predictions": 0,
+          "duplicate_ids": 0,
+          "tokens_and_spans_valid": true,
+          "max_metric_difference_vs_log": 0.0,
+          "recomputed_scores": {
+            "entity": {
+              "prec": 0.573170731707317,
+              "rec": 0.6207181180354931,
+              "f": 0.5959976223499108
+            },
+            "mention": {
+              "prec": 0.573170731707317,
+              "rec": 0.6207181180354931,
+              "f": 0.5959976223499108
+            },
+            "trigger": {
+              "prec": 0.8081363386476086,
+              "rec": 0.7773664727657325,
+              "f": 0.7924528301886793
+            },
+            "trigger_id": {
+              "prec": 0.840571742715778,
+              "rec": 0.8085668958223162,
+              "f": 0.8242587601078167
+            },
+            "role": {
+              "prec": 0.4112868747327918,
+              "rec": 0.3708558211256746,
+              "f": 0.3900263531319683
+            },
+            "role_id": {
+              "prec": 0.46558358272766137,
+              "rec": 0.4198149575944487,
+              "f": 0.4415163186701804
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          },
+          "prediction_sha256": "8e2706dad85f055748e4aec98527e4cd1fb71fa25a7df0a746d73246427401b1",
+          "full_gold_max_difference": 0.0,
+          "full_gold_scores": {
+            "entity": {
+              "prec": 0.7290396341463414,
+              "rec": 0.20558839333691564,
+              "f": 0.32073099170089703
+            },
+            "mention": {
+              "prec": 0.7290396341463414,
+              "rec": 0.20558839333691564,
+              "f": 0.32073099170089703
+            },
+            "trigger": {
+              "prec": 0.8081363386476086,
+              "rec": 0.7765451664025357,
+              "f": 0.7920258620689655
+            },
+            "trigger_id": {
+              "prec": 0.840571742715778,
+              "rec": 0.8077126254622292,
+              "f": 0.8238146551724138
+            },
+            "role": {
+              "prec": 0.4202650705429671,
+              "rec": 0.3192594998376096,
+              "f": 0.3628645256552233
+            },
+            "role_id": {
+              "prec": 0.4771269773407439,
+              "rec": 0.3624553426437155,
+              "f": 0.41196013289036537
+            },
+            "relation": {
+              "prec": 0,
+              "rec": 0,
+              "f": 0
+            }
+          }
+        }
+      },
+      "checkpoints": {
+        "best.role.mdl": {
+          "path": ".kaggle-deploy/archive/GENEVA/oneie-geneva/runs/20260924_031951/best.role.mdl",
+          "bytes": 729374603,
+          "sha256": "e5e7f8d7ec753333180cbfffaa4a419f67c101101a1f5e0b0adf008fd3e1258f",
+          "cpu_load": "PASS",
+          "model_tensors_finite": true,
+          "tensor_count": 227,
+          "selected_epoch_from_log": 29,
+          "config_present": true,
+          "vocabs_present": true,
+          "constraints_present": true,
+          "inference_replayed": false
+        }
+      },
+      "status": "SCORES_AND_BEST_CHECKPOINT_PASS"
+    }
+  },
+  "status": "SCORES_AND_BEST_CHECKPOINT_PASS"
+}

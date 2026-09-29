@@ -1,0 +1,96 @@
+{
+  "status": "COMPLETE",
+  "completed_epochs": 30,
+  "best_epoch_index": 29,
+  "resume": {
+    "source": "/kaggle/input/oneie-bkee-checkpoint-epoch-11/oneie-bkee/runs/20260918_061048/best.role.mdl",
+    "mode": "weights-only; optimizer and scheduler restarted",
+    "start_epoch": 11
+  },
+  "splits": {
+    "dev": {
+      "sentences": 4301,
+      "original_empty_gold_records": 4301,
+      "scores_match_log": true,
+      "scores": {
+        "entity": {
+          "prec": 0.49528894472361806,
+          "rec": 0.5500523194977328,
+          "f": 0.5212361593125103
+        },
+        "mention": {
+          "prec": 0.5179020100502513,
+          "rec": 0.5751656784094873,
+          "f": 0.5450338786977359
+        },
+        "trigger": {
+          "prec": 0.5623298856831791,
+          "rec": 0.5950460829493087,
+          "f": 0.5782255807444724
+        },
+        "trigger_id": {
+          "prec": 0.5851932498639085,
+          "rec": 0.6192396313364056,
+          "f": 0.6017352364959417
+        },
+        "role": {
+          "prec": 0.4683420365535248,
+          "rec": 0.4645516348332794,
+          "f": 0.4664391353811149
+        },
+        "role_id": {
+          "prec": 0.4977154046997389,
+          "rec": 0.49368727743606344,
+          "f": 0.4956931578091987
+        },
+        "relation": {
+          "prec": 0,
+          "rec": 0,
+          "f": 0
+        }
+      }
+    },
+    "test": {
+      "sentences": 3736,
+      "original_empty_gold_records": 3736,
+      "scores_match_log": true,
+      "scores": {
+        "entity": {
+          "prec": 0.5216016859852476,
+          "rec": 0.56442417331813,
+          "f": 0.5421686746987951
+        },
+        "mention": {
+          "prec": 0.5458377239199157,
+          "rec": 0.5906499429874572,
+          "f": 0.5673603504928806
+        },
+        "trigger": {
+          "prec": 0.5950255102040817,
+          "rec": 0.6187002652519894,
+          "f": 0.6066319895968791
+        },
+        "trigger_id": {
+          "prec": 0.6141581632653061,
+          "rec": 0.6385941644562334,
+          "f": 0.6261378413524058
+        },
+        "role": {
+          "prec": 0.5103703703703704,
+          "rec": 0.49056603773584906,
+          "f": 0.5002722817208205
+        },
+        "role_id": {
+          "prec": 0.5351851851851852,
+          "rec": 0.5144179423282307,
+          "f": 0.5245961154474497
+        },
+        "relation": {
+          "prec": 0,
+          "rec": 0,
+          "f": 0
+        }
+      }
+    }
+  }
+}

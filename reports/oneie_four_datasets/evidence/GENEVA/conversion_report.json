@@ -1,0 +1,58 @@
+{
+  "dataset": "GENEVA",
+  "projection": "shortest non-overlapping spans; single role per event/entity; ARG entity type",
+  "split_policy": "original splits",
+  "splits": {
+    "train": {
+      "counts": {
+        "input_sentences": 1968,
+        "original_events": 4170,
+        "original_arguments": 6777,
+        "unused_entities_removed": 13359,
+        "removed_overlapping_entities": 1080,
+        "removed_arguments_overlap": 1104,
+        "kept_sentences": 1968,
+        "projected_events": 4169,
+        "projected_arguments": 5662,
+        "removed_multirole_or_duplicate_arguments": 10,
+        "removed_overlapping_events": 1
+      },
+      "rejected": []
+    },
+    "dev": {
+      "counts": {
+        "input_sentences": 783,
+        "original_events": 1442,
+        "original_arguments": 2383,
+        "unused_entities_removed": 5162,
+        "removed_overlapping_entities": 335,
+        "removed_arguments_overlap": 337,
+        "kept_sentences": 783,
+        "projected_events": 1442,
+        "projected_arguments": 2046
+      },
+      "rejected": []
+    },
+    "test": {
+      "counts": {
+        "input_sentences": 933,
+        "original_events": 1893,
+        "original_arguments": 3109,
+        "unused_entities_removed": 6412,
+        "kept_sentences": 933,
+        "projected_events": 1891,
+        "projected_arguments": 2621,
+        "removed_overlapping_entities": 470,
+        "removed_arguments_overlap": 482,
+        "removed_overlapping_events": 2,
+        "removed_multirole_or_duplicate_arguments": 1
+      },
+      "rejected": []
+    }
+  },
+  "source_hashes": {
+    "test.json": "313cf9a334fb9d4e68244403cd01b7bd4e48530fee49b532bfd97f504e626627",
+    "train.json": "763e0953a41eae56f165a8d7f30787c33eb7d3beb6b6a438dc8c2a9f4a5966de",
+    "val.json": "df23646948f76c3240c555b31d0386929076814465275071ecf5349ee2d98c71"
+  }
+}

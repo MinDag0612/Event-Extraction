@@ -1,0 +1,60 @@
+{
+  "dataset": "VHE",
+  "projection": "shortest non-overlapping spans; single role per event/entity; ARG entity type",
+  "split_policy": "seed42 text-grouped 80/10/10",
+  "splits": {
+    "train": {
+      "counts": {
+        "input_sentences": 3289,
+        "expanded_char_spans": 5,
+        "original_events": 4107,
+        "original_arguments": 10620,
+        "unused_entities_removed": 0,
+        "kept_sentences": 3289,
+        "projected_events": 4008,
+        "projected_arguments": 10336,
+        "removed_overlapping_events": 99,
+        "removed_overlapping_entities": 35,
+        "removed_arguments_overlap": 28,
+        "removed_multirole_or_duplicate_arguments": 5
+      },
+      "rejected": []
+    },
+    "dev": {
+      "counts": {
+        "input_sentences": 412,
+        "expanded_char_spans": 1,
+        "original_events": 538,
+        "original_arguments": 1336,
+        "unused_entities_removed": 0,
+        "kept_sentences": 412,
+        "projected_events": 531,
+        "projected_arguments": 1318,
+        "removed_overlapping_events": 7,
+        "removed_overlapping_entities": 3,
+        "removed_arguments_overlap": 3
+      },
+      "rejected": []
+    },
+    "test": {
+      "counts": {
+        "input_sentences": 410,
+        "expanded_char_spans": 1,
+        "original_events": 536,
+        "original_arguments": 1334,
+        "unused_entities_removed": 0,
+        "kept_sentences": 410,
+        "projected_events": 518,
+        "projected_arguments": 1273,
+        "removed_overlapping_entities": 12,
+        "removed_overlapping_events": 18,
+        "removed_arguments_overlap": 12
+      },
+      "rejected": []
+    }
+  },
+  "source_hashes": {
+    "vhe_event_schema.json": "790a772747785340986583f53cc1cc35f989ea088685fc4835f204b3e9c8ca66",
+    "event.json": "8fd56b46eae6da336f04becc998b57a1923df604b983d00763e18109c4dadad6"
+  }
+}

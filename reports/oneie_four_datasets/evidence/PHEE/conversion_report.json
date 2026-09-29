@@ -1,0 +1,67 @@
+{
+  "dataset": "PHEE",
+  "projection": "shortest non-overlapping spans; single role per event/entity; ARG entity type",
+  "split_policy": "original splits",
+  "splits": {
+    "train": {
+      "counts": {
+        "input_sentences": 2898,
+        "discontinuous_groups": 381,
+        "expanded_char_spans": 41,
+        "original_events": 3006,
+        "original_arguments": 15995,
+        "unused_entities_removed": 0,
+        "removed_multirole_or_duplicate_arguments": 2626,
+        "kept_sentences": 2898,
+        "projected_events": 2991,
+        "projected_arguments": 10637,
+        "removed_overlapping_entities": 2625,
+        "removed_arguments_overlap": 2643,
+        "removed_overlapping_events": 15
+      },
+      "rejected": []
+    },
+    "dev": {
+      "counts": {
+        "input_sentences": 961,
+        "discontinuous_groups": 123,
+        "expanded_char_spans": 12,
+        "original_events": 1003,
+        "original_arguments": 5446,
+        "unused_entities_removed": 0,
+        "removed_multirole_or_duplicate_arguments": 898,
+        "kept_sentences": 961,
+        "projected_events": 998,
+        "projected_arguments": 3582,
+        "removed_overlapping_entities": 927,
+        "removed_arguments_overlap": 936,
+        "removed_overlapping_events": 5
+      },
+      "rejected": []
+    },
+    "test": {
+      "counts": {
+        "input_sentences": 968,
+        "discontinuous_groups": 117,
+        "expanded_char_spans": 7,
+        "original_events": 1010,
+        "original_arguments": 5453,
+        "unused_entities_removed": 0,
+        "removed_overlapping_entities": 908,
+        "removed_arguments_overlap": 912,
+        "kept_sentences": 968,
+        "projected_events": 1006,
+        "projected_arguments": 3646,
+        "removed_multirole_or_duplicate_arguments": 875,
+        "removed_overlapping_events": 4
+      },
+      "rejected": []
+    }
+  },
+  "source_hashes": {
+    "source.json": "0c7124866b98573e3d3335c42122396ed992a844ee8385ee29c534ca9c34ef34",
+    "test.json": "ca7e24a88f62e8201583e14f206cd4df5c543acc627abd195bea4df8acd9afdf",
+    "dev.json": "e1e24c0dfbe6f624e590a26d294f3082d0142ffc28b9da56761f1dd45e96aa53",
+    "train.json": "a2d6cbdae3d95cb3a7e13439164c002041061f6f9823608af483c82d17a31f2b"
+  }
+}

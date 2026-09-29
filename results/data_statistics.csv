@@ -1,0 +1,13 @@
+dataset,split,samples,argument_before,argument_after,retention,retention_unit,dropped_arguments,events_before,events_after,dropped_events,processing_stage
+BKEE,train,10959,8786,8786,100.0,percent,0,4868,4868,0,preparation_only_not_upstream_graph_processing
+BKEE,dev,4301,3158,3158,100.0,percent,0,1736,1736,0,preparation_only_not_upstream_graph_processing
+BKEE,test,3736,2854,2854,100.0,percent,0,1508,1508,0,preparation_only_not_upstream_graph_processing
+VHE,train,3289,10620,10336,97.32580037664783,percent,284,4107,4008,99,token_aligned_to_projected
+VHE,dev,412,1336,1318,98.65269461077844,percent,18,538,531,7,token_aligned_to_projected
+VHE,test,410,1334,1273,95.42728635682158,percent,61,536,518,18,token_aligned_to_projected
+PHEE,train,2898,15995,10637,66.50203188496405,percent,5358,3006,2991,15,token_aligned_to_projected
+PHEE,dev,961,5446,3582,65.77304443628351,percent,1864,1003,998,5,token_aligned_to_projected
+PHEE,test,968,5453,3646,66.86227764533284,percent,1807,1010,1006,4,token_aligned_to_projected
+GENEVA,train,1968,6777,5662,83.54729231223256,percent,1115,4170,4169,1,token_aligned_to_projected
+GENEVA,dev,783,2383,2046,85.85816198069661,percent,337,1442,1442,0,token_aligned_to_projected
+GENEVA,test,933,3109,2621,84.3036346091991,percent,488,1893,1891,2,token_aligned_to_projected
