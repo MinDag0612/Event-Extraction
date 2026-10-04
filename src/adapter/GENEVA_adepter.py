@@ -11,10 +11,11 @@ from collections import defaultdict
 
 class GENEVAAdapter(AdapterInterface):
     def __init__(self):
+        self.counter = 1
         self.events_schema = []
     
     def adapt(self, data: Any) -> EventExtractionData:
-        data_id = data["doc_id"]
+        data_id = self.counter
         data_text = data["sentence"]
         
         entities_mapping = {
@@ -24,12 +25,16 @@ class GENEVAAdapter(AdapterInterface):
         }
         data_events = self.get_events(data["event_mentions"], entities_mapping)
         
-        return EventExtractionData(
+        event = EventExtractionData(
             id=data_id,
             text=data_text,
             tokens=list(data["tokens"]),
             events=data_events
         )
+        
+        self.counter += 1
+        
+        return event
         
     # SUB-FUNCTIONS
     def get_events(self, events: list, entities_map: list):
