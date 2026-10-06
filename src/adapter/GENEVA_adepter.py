@@ -14,7 +14,7 @@ class GENEVAAdapter(AdapterInterface):
         self.events_schema = []
     
     def adapt(self, data: Any) -> EventExtractionData:
-        data_id = data["doc_id"]
+        data_id = str(data["_unified_id"] if "_unified_id" in data else data["wnd_id"])
         data_text = data["sentence"]
         
         entities_mapping = {
@@ -24,12 +24,15 @@ class GENEVAAdapter(AdapterInterface):
         }
         data_events = self.get_events(data["event_mentions"], entities_mapping)
         
-        return EventExtractionData(
+        event = EventExtractionData(
             id=data_id,
             text=data_text,
             tokens=list(data["tokens"]),
             events=data_events
         )
+        
+        
+        return event
         
     # SUB-FUNCTIONS
     def get_events(self, events: list, entities_map: list):

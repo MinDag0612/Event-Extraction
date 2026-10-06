@@ -19,37 +19,19 @@ wheels/
 # Jupyter
 .ipynb_checkpoints/
 
-# Raw datasets are downloaded locally and must not be committed. Keep the
-# download script so collaborators can reproduce the data setup.
-data/raw/*
-!data/raw/MAVEN-Arg/
-!data/raw/MAVEN-Arg/download.sh
+# Local datasets: retain only reproducible download scripts.
+/data/**
+!/data/raw/
+!/data/raw/*/
+!/data/raw/*/download.py
+!/data/raw/*/download.sh
 
+# Local model weights.
+/models/
 
-
-
-test.json
-=
-!data/raw/BKEE/
-data/raw/BKEE/*
-!data/raw/BKEE/download.sh
-
-!data/raw/GENEVA/
-data/raw/GENEVA/*
-!data/raw/GENEVA/download.py
-
-!data/raw/RAMS/
-data/raw/RAMS/*
-!data/raw/RAMS/download.py
-
-!data/raw/VHE/
-data/raw/VHE/*
-!data/raw/VHE/download.py
-
-# Local Kaggle credentials and deployment artifacts
-/EE.md
+# Local Kaggle artifacts and credentials.
 /.kaggle-deploy/
+/EE.md
 
-!data/raw/PHEE/
-data/raw/PHEE/*
-!data/raw/PHEE/download.py
+# macOS metadata.
+.DS_Store
