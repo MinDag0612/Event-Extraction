@@ -37,39 +37,14 @@ class VHEAdapter(AdapterInterface):
             argument_roles=arguments_roles
         )
 
-    # SUB-FUNCTIONS
-    def get_events(self, events: list, text: str, offsets: list, event_id: str) -> list:
-        event_list = []
-        count_invalid_spans = 0
-        invalid_spans = []
-
-        for event in events:
-            event_type = event.get("type", "")
-            try: 
-                trigger = [
-                    Trigger(text=event["trigger_word"], span=char_to_token_span(text, offsets, event["offset"]))
-                ]
-                arguments = [
-                    Argument(role=arg["role"], mentions=[
-                        {"text": arg["mention"], "span": char_to_token_span(text, offsets, arg["offset"])}
-                    ])
-                    for arg in event.get("arguments", [])
-                    ]
-
-                event = Event(
-                    event_type=event_type,
-                    trigger=trigger,
-                    arguments=arguments
-                )
-                event_list.append(event)
-            
-            except ValueError as e:
-                count_invalid_spans += 1
-                invalid_spans.append(str(e))
-                continue  # Skip events with invalid spans
-        
-        if count_invalid_spans > 0:
-            print(f"Event {event_id} has {count_invalid_spans} invalid spans. This event has been skipped.")
-            print(f"Invalid spans for event {event_id}: {invalid_spans}")
-
-        return event_list
+    def get_events(self, events, text, offsets, event_id):
+        def mention(value, span):
+            if text[span[0]:span[1]] != value:
+                raise ValueError(f"VHE {event_id}: mention/character mismatch")
+            return {"text": value, "span": char_to_token_span(text, offsets, span)}
+        return [Event(
+            event_type=e["type"],
+            trigger=[Trigger(**mention(e["trigger_word"], e["offset"]))],
+            arguments=[Argument(role=a["role"], mentions=[mention(a["mention"], a["offset"])])
+                       for a in e.get("arguments", [])]
+        ) for e in events]

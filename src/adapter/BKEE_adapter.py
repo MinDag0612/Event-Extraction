@@ -65,12 +65,12 @@ class BKEEAdapter(AdapterInterface):
         )
 
         if not isinstance(raw_events, list):
-            return []
+            raise ValueError("BKEE events must be an array")
 
         events: list[Event] = []
         for raw_event in raw_events:
             if not isinstance(raw_event, dict):
-                continue
+                raise ValueError("BKEE event must be an object")
 
             event_type = self._as_str(
                 self._pick(raw_event, ["event_type", "type", "subtype", "label"])
@@ -124,7 +124,7 @@ class BKEEAdapter(AdapterInterface):
             grouped: dict[str, list[dict[str, Any]]] = {}
             for item in raw_arguments:
                 if not isinstance(item, dict):
-                    continue
+                    raise ValueError("BKEE argument must be an object")
 
                 role = self._as_str(
                     self._pick(item, ["role", "argument_role", "label", "type"])
@@ -133,7 +133,7 @@ class BKEEAdapter(AdapterInterface):
 
             return [Argument(role=role, mentions=mentions) for role, mentions in grouped.items()]
 
-        return []
+        raise ValueError("BKEE arguments must be an array or object")
 
     def _normalize_mentions(self, raw: Any) -> list[dict[str, Any]]:
         items: Iterable[Any]
@@ -178,7 +178,9 @@ class BKEEAdapter(AdapterInterface):
         # Character offsets must not be returned as unified spans.
         if "start" not in source or "end" not in source:
             raise ValueError("BKEE mention requires original token start/end")
-        return (int(source["start"]), int(source["end"]))
+        if type(source["start"]) is not int or type(source["end"]) is not int:
+            raise ValueError("BKEE offsets must be integers")
+        return (source["start"], source["end"])
 
     def _as_str(self, value: Any) -> str:
         return "" if value is None else str(value)
