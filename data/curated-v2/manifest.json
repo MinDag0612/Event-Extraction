@@ -1,0 +1,69 @@
+{
+  "version": "curated-v2",
+  "format": "Unified JSONL",
+  "purpose": "Full gold shared by OneIE and SLM; no OneIE projection",
+  "source_kaggle": "vietquan299/oneie-curated-v2",
+  "source_kaggle_version": 2,
+  "files": {
+    "BKEE/train.jsonl": {
+      "sha256": "be94f1f1e3cf32d2fe38b411e4a6f66114a112002d34d7edce05872c459560f9",
+      "samples": 9341,
+      "bytes": 5097223
+    },
+    "BKEE/dev.jsonl": {
+      "sha256": "5bcb8fcbe478f72bb6fe051842a265071b7ceaeb76f498624931a277130bc951",
+      "samples": 4039,
+      "bytes": 2121955
+    },
+    "BKEE/test.jsonl": {
+      "sha256": "7803328e0ff21e2df9e982a8fd52bb32cd5701cdeb15e00b46702fda14f6c8ed",
+      "samples": 3728,
+      "bytes": 1922641
+    },
+    "GENEVA/train.jsonl": {
+      "sha256": "320e3e61fb7eba294cfadb3d5459fc7bb0eb9611ff3b5552c89407f91a11661d",
+      "samples": 1874,
+      "bytes": 1804016
+    },
+    "GENEVA/dev.jsonl": {
+      "sha256": "1319d929d1507641dfcfdc5b042fbb78848c80ea73326ff7e96c5cd51ab9ec7c",
+      "samples": 766,
+      "bytes": 667739
+    },
+    "GENEVA/test.jsonl": {
+      "sha256": "f29c716faccf4d65900a71d43cbe4feb2b00fb872c7cc5827838429832a5e72e",
+      "samples": 930,
+      "bytes": 871201
+    },
+    "PHEE/train.jsonl": {
+      "sha256": "6e08f876b452e6806a5e4515e1b497481d9f4bc3d2023f27c340b1c12e6a130a",
+      "samples": 2853,
+      "bytes": 3800143
+    },
+    "PHEE/dev.jsonl": {
+      "sha256": "a6215012eeccf158b02f3fca3e41506d1c219dafb8b28bf8e8af6a920c4b61ce",
+      "samples": 949,
+      "bytes": 1283221
+    },
+    "PHEE/test.jsonl": {
+      "sha256": "71ec1b12f0f053012109fd3135ff44801eab3037664a24f6ddb701a11c8447f2",
+      "samples": 961,
+      "bytes": 1303301
+    },
+    "VHE/train.jsonl": {
+      "sha256": "758b0170c598b7c452efa15972607de7f3bb925ef6a36fe49ed19ccb5cdf1729",
+      "samples": 3267,
+      "bytes": 2597633
+    },
+    "VHE/dev.jsonl": {
+      "sha256": "48c9724bc0dbff731a6bc6bac1f889bf5617fd0c499afde6f20800291efb1999",
+      "samples": 406,
+      "bytes": 316631
+    },
+    "VHE/test.jsonl": {
+      "sha256": "330971e2854f706c88aaeedf9478fb86a2f5a351bd791af5457d1171d9a91924",
+      "samples": 397,
+      "bytes": 331510
+    }
+  }
+}
