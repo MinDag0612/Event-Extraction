@@ -7,6 +7,7 @@ class AC(BaseMetrics):
 
     An argument is correct if:
     - argument span matches
+    - event type matches
     - argument role matches
     """
 
@@ -27,12 +28,14 @@ class AC(BaseMetrics):
         arguments = []
 
         for event in data.get("events", []):
+            event_type = event.get("event_type")
+
             for argument in event.get("arguments", []):
                 role = argument.get("role")
 
                 for mention in argument.get("mentions", []):
                     span = tuple(mention["span"])
 
-                    arguments.append((span, role))
+                    arguments.append((span, event_type, role))
 
         return arguments

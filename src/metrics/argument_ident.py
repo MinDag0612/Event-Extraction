@@ -1,3 +1,4 @@
+
 from src.metrics.base_metrics import BaseMetrics
 
 
@@ -7,6 +8,7 @@ class AI(BaseMetrics):
 
     An argument is correct if:
     - argument span matches
+    - event type matches
 
     Argument role is ignored.
     """
@@ -28,8 +30,11 @@ class AI(BaseMetrics):
         arguments = []
 
         for event in data.get("events", []):
+            event_type = event.get("event_type")
+
             for argument in event.get("arguments", []):
                 for mention in argument.get("mentions", []):
-                    arguments.append(tuple(mention["span"]))
+                    span = tuple(mention["span"])
+                    arguments.append((span, event_type))
 
         return arguments
