@@ -25,8 +25,6 @@ class ParsedEvent:
 
 
 class PHEEAdapter(AdapterInterface):
-    def get_schema(self) -> dict[str, Any]:
-        return {"title": "phee", "required": ["id", "context", "annotations"]}
 
     def adapt(self, data: dict[str, Any]) -> EventExtractionData:
         text = data["context"]

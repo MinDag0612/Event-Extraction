@@ -39,17 +39,6 @@ class BKEEAdapter(AdapterInterface):
             tokens=list(data["tokens"]),
         )
 
-    def get_schema(self) -> Dict[str, Any]:
-        return {
-            "type": "object",
-            "properties": {
-                "id": {"type": ["string", "number"]},
-                "text": {"type": "string"},
-                "events": {"type": "array"},
-            },
-            "required": ["text"],
-        }
-
     # Internal mapping 
     def _get_events(self, data: dict[str, Any]) -> list[Event]:
         raw_events = self._pick(

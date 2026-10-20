@@ -40,18 +40,5 @@ class AutoAdapter(AdapterInterface):
             return self.maven_adapter.adapt(data)
         return self.bkee_adapter.adapt(data)
 
-    def get_schema(self):
-        return {
-            "oneOf": [
-                {"title": "maven_arg"},
-                {"title": "bkee_like"},
-                {"title": "rams"},
-                {"title": "phee"}, {"title": "vhe"}, {"title": "geneva"},
-            ]
-        }
-
-    def _looks_maven(self, data: dict[str, Any]) -> bool:
-        return "document" in data and "entities" in data and "events" in data
-
     def _looks_rams(self, data: dict[str, Any]) -> bool:
         return "sentences" in data and "evt_triggers" in data and "doc_key" in data

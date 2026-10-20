@@ -6,6 +6,7 @@ from src.unified_format.event import Event
 from src.unified_format.event_schema import EventSchema
 
 from typing import Any
+from src.unified_format.schema import Schema
 from src.adapter.token_spans import tokenize_with_offsets, char_to_token_span
 
 class VHEAdapter(AdapterInterface):
@@ -25,17 +26,16 @@ class VHEAdapter(AdapterInterface):
             events=events
         )
 
-    def get_schema(self, data: Any) -> EventSchema:
-        type = data.get("event-type", "")
-        arguments_roles = [
-            role['role']
-            for role in data.get("role-list", [])
-        ]
-
-        return EventSchema(
-            event_type=type,
-            argument_roles=arguments_roles
-        )
+    def get_schema(self, data: Any) -> Schema:
+        if isinstance(data, dict) and "event_schemas" in data:
+            return super().get_schema(data)
+        rows = [data] if isinstance(data, dict) else data
+        events = []
+        for row in rows:
+            if not isinstance(row, dict) or not {"event-type", "role-list"} <= row.keys():
+                raise ValueError("Expected VHE ontology entries")
+            events.append(EventSchema(row["event-type"], [r["role"] for r in row["role-list"]]))
+        return Schema(events)
 
     def get_events(self, events, text, offsets, event_id):
         def mention(value, span):
