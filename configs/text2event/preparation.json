@@ -1,0 +1,18 @@
+{
+  "variant": "Text2Event-mT5 with relaxed role constraints and deterministic span recovery",
+  "model_name": "google/mt5-base",
+  "model_revision": "2eb15465c5dd7f72a8f7984306ad05ebc3dd1e1f",
+  "source_format": "space-joined original tokens",
+  "target_format": "upstream Text2Event tree",
+  "additional_special_tokens": ["<extra_id_0>", "<extra_id_1>"],
+  "resize_token_embeddings_to_tokenizer": true,
+  "max_source_length": 832,
+  "max_target_length": 704,
+  "generation_max_new_tokens": 704,
+  "truncation": false,
+  "span_policy": "nearest-trigger",
+  "surface_normalizer": "saved tokenizer backend normalizer",
+  "schema_policy": "known event types x known roles, no per-event role restriction",
+  "checkpoint_selection": "DEV AC",
+  "full_training_pipeline_ready": false
+}

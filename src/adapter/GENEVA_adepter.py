@@ -68,10 +68,12 @@ class GENEVAAdapter(AdapterInterface):
             if event_name:
                 current_event = event_name
                 mapping.setdefault(current_event, [])
-            if row.get("Is Argument Role?", "").strip() == "1":
+            flag = row.get("Is Argument Role?", "").strip()
+            if flag in {"1", "3"}:
                 if current_event is None:
                     raise ValueError("GENEVA role occurs before event header")
-                role = row.get("Frame Element Name", "").strip()
+                key = "Merged Argument Role (if previous column is 3)" if flag == "3" else "Frame Element Name"
+                role = row.get(key, "").strip()
                 if not role:
                     raise ValueError("GENEVA role is empty")
                 mapping[current_event].append(role)
