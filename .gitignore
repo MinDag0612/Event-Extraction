@@ -16,6 +16,7 @@ wheels/
 .venv/
 .vscode/
 
+/reports/*
 # Jupyter
 .ipynb_checkpoints/
 
