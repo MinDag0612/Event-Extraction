@@ -12,11 +12,14 @@ dist/
 wheels/
 *.egg-info
 
+/.kaggle-deploy 
+/reports/*
+/tests/*
+
 # Virtual environments
 .venv/
 .vscode/
 
-/reports/*
 # Jupyter
 .ipynb_checkpoints/
 
@@ -30,7 +33,6 @@ data/raw/*
 
 
 test.json
-=
 !data/raw/BKEE/
 data/raw/BKEE/*
 !data/raw/BKEE/download.sh
