@@ -104,3 +104,8 @@ uv sync
 ```
 
 to update their environment.
+
+## Shared data pipeline
+
+Raw → dataset adapters → Unified → curated-v2 → model converter.
+See [reproduction and OneIE conversion](docs/DATA_FLOW.md).
