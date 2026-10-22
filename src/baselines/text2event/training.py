@@ -30,7 +30,8 @@ def load_components(config, tokenizer_path):
 
 
 class BundleDataset(Dataset):
-    def __init__(self, folder, split, tokenizer, max_source_length, max_target_length):
+    def __init__(self, folder, split, tokenizer, max_source_length, max_target_length, stage="full"):
+        if stage not in {"full", "trigger"}: raise ValueError("Unknown curriculum stage")
         folder = Path(folder)
         rows = [json.loads(line) for line in (folder / f'{split}.json').read_text().splitlines()]
         gold = [json.loads(line) for line in (folder / f'{split}.gold.jsonl').read_text().splitlines()]
@@ -43,7 +44,13 @@ class BundleDataset(Dataset):
                 raise ValueError(f'Bundle alignment/content mismatch: {sample["id"]}')
             seen.add(sample['id'])
             source = tokenizer(row['text'], truncation=False)
-            target = tokenizer(row['event'], truncation=False)['input_ids']
+            target_text = row['event']
+            if stage == "trigger":
+                import copy
+                simplified = copy.deepcopy(sample)
+                for event in simplified['events']: event['arguments'] = []
+                target_text = convert(simplified)['event']
+            target = tokenizer(target_text, truncation=False)['input_ids']
             if len(source['input_ids']) > max_source_length or len(target) > max_target_length:
                 raise ValueError(f'Length overflow (no truncation): {sample["id"]}')
             self.examples.append({'id': sample['id'], 'input_ids': source['input_ids'],

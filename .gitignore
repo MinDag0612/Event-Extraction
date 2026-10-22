@@ -12,6 +12,8 @@ dist/
 wheels/
 *.egg-info
 
+/reports/*
+
 # Virtual environments
 .venv/
 .vscode/
@@ -19,40 +21,32 @@ wheels/
 # Jupyter
 .ipynb_checkpoints/
 
-# Raw datasets are downloaded locally and must not be committed. Keep the
-# download script so collaborators can reproduce the data setup.
-data/raw/*
-!data/raw/MAVEN-Arg/
-!data/raw/MAVEN-Arg/download.sh
+# Local data: keep download scripts and the shared curated-v2 snapshot.
+/data/*
+!/data/raw/
+/data/raw/**
+!/data/raw/**/
+!/data/raw/**/download.sh
+!/data/raw/**/download.py
+!/data/curated-v2/
 
+# Local Kaggle bundles, credentials, and experiment artifacts.
+/.kaggle-deploy/
+/EE.md
+.env
+.env.*
+!.env.example
+kaggle.json
+/models/
+/checkpoints/
+/outputs/
+/runs/
+/wandb/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.log
 
-
-
-test.json
-=
-!data/raw/BKEE/
-data/raw/BKEE/*
-!data/raw/BKEE/download.sh
-
-!data/raw/GENEVA/
-data/raw/GENEVA/*
-!data/raw/GENEVA/download.py
-
-!data/raw/RAMS/
-data/raw/RAMS/*
-!data/raw/RAMS/download.py
-
-!data/raw/VHE/
-data/raw/VHE/*
-!data/raw/VHE/download.py
-
-data/processed/VHE/
-data/processed/GENEVA/
-
-# Local datasets and model weights are not committed.
-data/*
-!data/raw/
-!data/raw/**/
-!data/raw/**/download.sh
-!data/raw/**/download.py
-models/
+# Operating system metadata.
+.DS_Store
