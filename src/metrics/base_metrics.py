@@ -30,7 +30,12 @@ class BaseMetrics:
 
         return 2 * p * r / (p + r)
 
-    def compute(self):
+    def compute(self, f1_only=False):
+        if f1_only:
+            return {
+                "f1": self.f1(),
+            }
+             
         return {
             "precision": self.precision(),
             "recall": self.recall(),
