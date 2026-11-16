@@ -19,6 +19,9 @@ wheels/
 # Jupyter
 .ipynb_checkpoints/
 
+# Local Kaggle deployment payloads, checkpoints, logs, and downloaded results
+.kaggle-deploy/
+
 # Raw datasets are downloaded locally and must not be committed. Keep the
 # download script so collaborators can reproduce the data setup.
 data/raw/*
