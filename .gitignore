@@ -22,6 +22,12 @@ wheels/
 # Local Kaggle deployment payloads, checkpoints, logs, and downloaded results
 .kaggle-deploy/
 
+# Local reports, credentials/notes, and operating-system metadata
+reports/
+EE.md
+.DS_Store
+**/.DS_Store
+
 # Raw datasets are downloaded locally and must not be committed. Keep the
 # download script so collaborators can reproduce the data setup.
 data/raw/*
@@ -67,3 +73,9 @@ model/notebooks/private
 tests/*
 
 model/Qwen3-4B/checkpoints/*
+
+# Keep downloaded raw corpora local; retain only reproducible download scripts
+data/raw/**
+!data/raw/**/
+!data/raw/**/download.sh
+!data/raw/**/download.py
