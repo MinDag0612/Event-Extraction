@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "metric": "full DEV4039 AC F1",
+  "patience": 3,
+  "min_delta": 0.001,
+  "min_full_epochs": 5,
+  "max_full_epochs": 30,
+  "scope": "controller after each complete DEV4039 evaluation; evaluate source best epoch2 and latest epoch3 first",
+  "best_checkpoint": "highest full DEV AC independently of patience min_delta",
+  "test": "only after early stopping or full epoch30, verify selected DEV first"
+}

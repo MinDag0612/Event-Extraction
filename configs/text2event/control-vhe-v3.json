@@ -1,0 +1,447 @@
+{
+  "run": {
+    "kind": "TRAIN-only-learning-probe-not-baseline",
+    "dataset": "VHE",
+    "examples": 8,
+    "substructure_epochs": 80,
+    "full_epochs": 40,
+    "eval_every": 8,
+    "threshold": 0.8,
+    "lr": 0.0001,
+    "seed": 421,
+    "batch": 1,
+    "selection": "gate passed, minimum component F1, combined F1, then minimum teacher-forced token loss",
+    "config": {
+      "variant": "Text2Event-mT5 upstream-style substructure then full structure",
+      "model_name": "google/mt5-base",
+      "model_revision": "2eb15465c5dd7f72a8f7984306ad05ebc3dd1e1f",
+      "source_format": "space-joined original tokens",
+      "target_format": "upstream Text2Event tree",
+      "additional_special_tokens": [
+        "<extra_id_0>",
+        "<extra_id_1>"
+      ],
+      "resize_token_embeddings_to_tokenizer": true,
+      "max_source_length": 832,
+      "max_target_length": 704,
+      "generation_max_new_tokens": 704,
+      "truncation": false,
+      "span_policy": "nearest-trigger",
+      "surface_normalizer": "saved tokenizer backend normalizer",
+      "schema_policy": "known event types x known roles, no per-event role restriction",
+      "checkpoint_selection": "DEV AC",
+      "full_training_pipeline_ready": false,
+      "constraint_repetition_policy": "none",
+      "constraint_repetition_limits": {
+        "BKEE": {
+          "event_repeat_limit": 1,
+          "argument_repeat_limit": 1,
+          "train_sha256": "be94f1f1e3cf32d2fe38b411e4a6f66114a112002d34d7edce05872c459560f9"
+        },
+        "GENEVA": {
+          "event_repeat_limit": 1,
+          "argument_repeat_limit": 1,
+          "train_sha256": "320e3e61fb7eba294cfadb3d5459fc7bb0eb9611ff3b5552c89407f91a11661d"
+        },
+        "PHEE": {
+          "event_repeat_limit": 3,
+          "argument_repeat_limit": 2,
+          "train_sha256": "6e08f876b452e6806a5e4515e1b497481d9f4bc3d2023f27c340b1c12e6a130a"
+        },
+        "VHE": {
+          "event_repeat_limit": 8,
+          "argument_repeat_limit": 3,
+          "train_sha256": "758b0170c598b7c452efa15972607de7f3bb925ef6a36fe49ed19ccb5cdf1729"
+        }
+      },
+      "constraint_decoder": "upstream-compatible",
+      "substructure_source_prefix": "span: ",
+      "full_source_prefix": "event: ",
+      "curriculum": "flat type-trigger and role-argument substructure -> full event tree",
+      "upstream_revision": "dbe5a0ae933d639980c8e1f62c141511c12cefd6",
+      "empty_root_penalty": 0.0
+    }
+  },
+  "selected_train": [
+    {
+      "id": "VHE:event:000104",
+      "text": "Vua mất, thuỵ là Văn Vương.",
+      "events": [
+        {
+          "event_type": "die",
+          "trigger": [
+            {
+              "text": "mất",
+              "span": [
+                1,
+                2
+              ]
+            }
+          ],
+          "arguments": [
+            {
+              "role": "theme",
+              "mentions": [
+                {
+                  "text": "Vua",
+                  "span": [
+                    0,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tokens": [
+        "Vua",
+        "mất",
+        ",",
+        "thuỵ",
+        "là",
+        "Văn",
+        "Vương",
+        "."
+      ]
+    },
+    {
+      "id": "VHE:event:000110",
+      "text": "Năm ấy vua mất, thuỵ là Minh Vương.",
+      "events": [
+        {
+          "event_type": "die",
+          "trigger": [
+            {
+              "text": "mất",
+              "span": [
+                3,
+                4
+              ]
+            }
+          ],
+          "arguments": [
+            {
+              "role": "theme",
+              "mentions": [
+                {
+                  "text": "vua",
+                  "span": [
+                    2,
+                    3
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tokens": [
+        "Năm",
+        "ấy",
+        "vua",
+        "mất",
+        ",",
+        "thuỵ",
+        "là",
+        "Minh",
+        "Vương",
+        "."
+      ]
+    },
+    {
+      "id": "VHE:event:000208",
+      "text": "Bèn giết Hệ.",
+      "events": [
+        {
+          "event_type": "die",
+          "trigger": [
+            {
+              "text": "giết",
+              "span": [
+                1,
+                2
+              ]
+            }
+          ],
+          "arguments": [
+            {
+              "role": "theme",
+              "mentions": [
+                {
+                  "text": "Hệ",
+                  "span": [
+                    2,
+                    3
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tokens": [
+        "Bèn",
+        "giết",
+        "Hệ",
+        "."
+      ]
+    },
+    {
+      "id": "VHE:event:000229",
+      "text": "Uy ở chức rất được lòng dân, được 30 năm thì chết.",
+      "events": [
+        {
+          "event_type": "die",
+          "trigger": [
+            {
+              "text": "chết",
+              "span": [
+                12,
+                13
+              ]
+            }
+          ],
+          "arguments": [
+            {
+              "role": "theme",
+              "mentions": [
+                {
+                  "text": "Uy",
+                  "span": [
+                    0,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tokens": [
+        "Uy",
+        "ở",
+        "chức",
+        "rất",
+        "được",
+        "lòng",
+        "dân",
+        ",",
+        "được",
+        "30",
+        "năm",
+        "thì",
+        "chết",
+        "."
+      ]
+    },
+    {
+      "id": "VHE:event:000421",
+      "text": "Vua mất.",
+      "events": [
+        {
+          "event_type": "die",
+          "trigger": [
+            {
+              "text": "mất",
+              "span": [
+                1,
+                2
+              ]
+            }
+          ],
+          "arguments": [
+            {
+              "role": "theme",
+              "mentions": [
+                {
+                  "text": "Vua",
+                  "span": [
+                    0,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tokens": [
+        "Vua",
+        "mất",
+        "."
+      ]
+    },
+    {
+      "id": "VHE:event:000434",
+      "text": "Vua đem quân đi đánh hai thôn Đường và Nguyễn ở Thái Bình, mới vào đến cõi, đỗ thuyền lên bộ đánh, bị phục binh tay nỏ bắn trúng chết.",
+      "events": [
+        {
+          "event_type": "die",
+          "trigger": [
+            {
+              "text": "bắn",
+              "span": [
+                30,
+                31
+              ]
+            }
+          ],
+          "arguments": [
+            {
+              "role": "theme",
+              "mentions": [
+                {
+                  "text": "Vua",
+                  "span": [
+                    0,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tokens": [
+        "Vua",
+        "đem",
+        "quân",
+        "đi",
+        "đánh",
+        "hai",
+        "thôn",
+        "Đường",
+        "và",
+        "Nguyễn",
+        "ở",
+        "Thái",
+        "Bình",
+        ",",
+        "mới",
+        "vào",
+        "đến",
+        "cõi",
+        ",",
+        "đỗ",
+        "thuyền",
+        "lên",
+        "bộ",
+        "đánh",
+        ",",
+        "bị",
+        "phục",
+        "binh",
+        "tay",
+        "nỏ",
+        "bắn",
+        "trúng",
+        "chết",
+        "."
+      ]
+    },
+    {
+      "id": "VHE:event:001626",
+      "text": "Đỗ người Phù Đái, huyện Đồng Lại, ngụ tại phường Nghi Tàm, Cơ Xá ở kinh thành, làm quan đến chức Ngự sử đài tư gián đình uý tự khanh trung đô phủ tổng quản rồi chết.",
+      "events": [
+        {
+          "event_type": "die",
+          "trigger": [
+            {
+              "text": "chết",
+              "span": [
+                40,
+                41
+              ]
+            }
+          ],
+          "arguments": [
+            {
+              "role": "theme",
+              "mentions": [
+                {
+                  "text": "Đỗ",
+                  "span": [
+                    0,
+                    1
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tokens": [
+        "Đỗ",
+        "người",
+        "Phù",
+        "Đái",
+        ",",
+        "huyện",
+        "Đồng",
+        "Lại",
+        ",",
+        "ngụ",
+        "tại",
+        "phường",
+        "Nghi",
+        "Tàm",
+        ",",
+        "Cơ",
+        "Xá",
+        "ở",
+        "kinh",
+        "thành",
+        ",",
+        "làm",
+        "quan",
+        "đến",
+        "chức",
+        "Ngự",
+        "sử",
+        "đài",
+        "tư",
+        "gián",
+        "đình",
+        "uý",
+        "tự",
+        "khanh",
+        "trung",
+        "đô",
+        "phủ",
+        "tổng",
+        "quản",
+        "rồi",
+        "chết",
+        "."
+      ]
+    },
+    {
+      "id": "VHE:event:002269",
+      "text": "Tri từ tụng Trịnh Khắc Phục cứu gỡ cho Trung Xích.",
+      "events": [],
+      "tokens": [
+        "Tri",
+        "từ",
+        "tụng",
+        "Trịnh",
+        "Khắc",
+        "Phục",
+        "cứu",
+        "gỡ",
+        "cho",
+        "Trung",
+        "Xích",
+        "."
+      ]
+    }
+  ],
+  "reference_result": {
+    "source": "version 3 VHE TRAIN diagnostic",
+    "substructure_epochs": 80,
+    "substructure_gate_passed": false,
+    "type_trigger_f1": 0.8571428571428571,
+    "role_argument_f1": 0.25,
+    "full_started": false
+  }
+}

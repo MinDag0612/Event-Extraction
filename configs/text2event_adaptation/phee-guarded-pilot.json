@@ -1,0 +1,19 @@
+{
+  "dataset": "PHEE",
+  "runtime_lock": "configs/text2event_adaptation/vhe-runtime-lock.json",
+  "train_samples": 2853,
+  "dev_samples": 949,
+  "substructure_schedule_epochs": 5,
+  "full_schedule_epochs": 30,
+  "invocation_substructure_epochs": 1,
+  "test_evaluated": false,
+  "guards": {
+    "sample_stall_seconds": 120,
+    "train_progress_stall_seconds": 300,
+    "io_stall_seconds": 900,
+    "consecutive_generation_limit_without_eos": 8,
+    "total_wall_clock_seconds": null
+  },
+  "interrupted_dev_score": null,
+  "checkpoint_protocol": "pre-dev-state.pt plus epoch-1-dev-commit.json after complete DEV; not stock --resume"
+}

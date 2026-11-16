@@ -9,11 +9,11 @@ import zipfile
 def package(root,bundle,output):
     if output.exists():raise FileExistsError(output)
     files={}
-    for tree in ['src','configs/text2event']:
+    for tree in ['src','configs/text2event','configs/text2event_clean']:
         for path in (root/tree).rglob('*'):
             if path.is_file() and path.suffix in {'.py','.json'} and '__pycache__' not in path.parts:
                 files[str(path.relative_to(root))]=path
-    for name in ['train_text2event.py','smoke_text2event.py']:
+    for name in ['run_text2event_clean.py','download_text2event_artifact.py','analyze_text2event_teacher_forcing.py','probe_text2event_teacher_forcing.py','probe_text2event_next_epoch.py','probe_text2event_dev.py','probe_text2event_control.py','pilot_text2event_eight.py','audit_text2event_eight.py','compare_text2event_checkpoints.py','pilot_text2event_expanded.py','probe_text2event_learning.py','pilot_text2event_short.py','train_text2event.py','smoke_text2event.py','diagnose_text2event.py','train_text2event_legacy.py','audit_text2event_curriculum.py','audit_text2event_constraints.py','replay_text2event_constraints.py']:
         files['scripts/'+name]=root/'scripts'/name
     for path in bundle.rglob('*'):
         if path.is_file():files['bundle/'+str(path.relative_to(bundle))]=path

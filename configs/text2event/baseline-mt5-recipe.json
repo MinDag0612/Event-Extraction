@@ -1,0 +1,18 @@
+{
+  "config": "configs/text2event/baseline-mt5.json",
+  "trainer_args": {
+    "epochs": 30,
+    "substructure-epochs": 5,
+    "micro-batch": 1,
+    "accumulation": 16,
+    "lr": 0.0001,
+    "lr-scheduler": "linear",
+    "warmup-ratio": 0.05,
+    "patience": 0,
+    "seed": 421
+  },
+  "gradient_checkpointing": true,
+  "first_invocation_epochs": 1,
+  "wall_clock_timeout": null,
+  "note": "Full TRAIN / full DEV. First invocation stops at epoch boundary for operational review; resume uses same training signature. Warmup ratio is an explicit project adaptation."
+}

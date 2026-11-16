@@ -4,8 +4,31 @@ import math
 from pathlib import Path
 import torch
 from torch.utils.data import Dataset
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-from src.baselines.text2event.convert import convert
+from transformers import AutoConfig, AutoModelForSeq2SeqLM, AutoTokenizer, PreTrainedConfig
+from src.baselines.text2event.convert import convert, convert_substructure
+
+
+def load_model_config(model_name, revision=None):
+    # Read the explicit upstream value: transformers 5.14.1 can overwrite the
+    # serialized mT5 tie_word_embeddings=False with its class default True.
+    raw, _ = PreTrainedConfig.get_config_dict(model_name, revision=revision)
+    model_config = AutoConfig.from_pretrained(model_name, revision=revision)
+    if 'tie_word_embeddings' in raw:
+        model_config.tie_word_embeddings = raw['tie_word_embeddings']
+    return model_config
+
+
+def embedding_report(model):
+    inp = model.get_input_embeddings().weight
+    out = model.get_output_embeddings().weight
+    tied = inp.data_ptr() == out.data_ptr()
+    if tied != bool(model.config.tie_word_embeddings):
+        raise ValueError('Embedding sharing differs from explicit pretrained configuration')
+    if not torch.isfinite(inp).all() or not torch.isfinite(out).all():
+        raise ValueError('Nonfinite pretrained embedding weights')
+    return {'tie_word_embeddings': model.config.tie_word_embeddings,
+            'actually_tied': tied, 'input_vocab': inp.shape[0],
+            'output_vocab': out.shape[0]}
 
 
 def load_components(config, tokenizer_path):
@@ -20,8 +43,12 @@ def load_components(config, tokenizer_path):
         ids = tokenizer.encode(marker, add_special_tokens=False)
         if len(ids) != 1 or ids[0] == tokenizer.unk_token_id:
             raise ValueError(f'Invalid marker: {marker}')
-    model = AutoModelForSeq2SeqLM.from_pretrained(config['model_name'], revision=config['model_revision'])
-    model.resize_token_embeddings(len(tokenizer))
+    model_config = load_model_config(config['model_name'], config['model_revision'])
+    model = AutoModelForSeq2SeqLM.from_pretrained(config['model_name'], revision=config['model_revision'], config=model_config)
+    before = embedding_report(model)
+    if model.get_input_embeddings().num_embeddings != len(tokenizer):
+        model.resize_token_embeddings(len(tokenizer))
+    model.text2event_load_report = {'before_resize': before, 'after_resize': embedding_report(model)}
     if model.get_input_embeddings().num_embeddings != len(tokenizer):
         raise ValueError('Input embedding vocabulary mismatch')
     if model.get_output_embeddings().weight.shape[0] != len(tokenizer):
@@ -30,8 +57,8 @@ def load_components(config, tokenizer_path):
 
 
 class BundleDataset(Dataset):
-    def __init__(self, folder, split, tokenizer, max_source_length, max_target_length, stage="full"):
-        if stage not in {"full", "trigger"}: raise ValueError("Unknown curriculum stage")
+    def __init__(self, folder, split, tokenizer, max_source_length, max_target_length, stage="full", source_prefix=""):
+        if stage not in {"full", "trigger", "substructure"}: raise ValueError("Unknown curriculum stage")
         folder = Path(folder)
         rows = [json.loads(line) for line in (folder / f'{split}.json').read_text().splitlines()]
         gold = [json.loads(line) for line in (folder / f'{split}.gold.jsonl').read_text().splitlines()]
@@ -43,13 +70,15 @@ class BundleDataset(Dataset):
             if sample['id'] in seen or convert(sample) != row:
                 raise ValueError(f'Bundle alignment/content mismatch: {sample["id"]}')
             seen.add(sample['id'])
-            source = tokenizer(row['text'], truncation=False)
+            source = tokenizer(source_prefix + row['text'], truncation=False)
             target_text = row['event']
             if stage == "trigger":
                 import copy
                 simplified = copy.deepcopy(sample)
                 for event in simplified['events']: event['arguments'] = []
                 target_text = convert(simplified)['event']
+            if stage == 'substructure':
+                target_text = convert_substructure(sample)['event']
             target = tokenizer(target_text, truncation=False)['input_ids']
             if len(source['input_ids']) > max_source_length or len(target) > max_target_length:
                 raise ValueError(f'Length overflow (no truncation): {sample["id"]}')
@@ -78,7 +107,7 @@ class BatchCollator:
         return batch
 
 
-def train_epoch(model, loader, optimizer, scheduler, device, accumulation=1, max_grad_norm=1.0):
+def train_epoch(model, loader, optimizer, scheduler, device, accumulation=1, max_grad_norm=1.0, progress_every=0, step_observer=None):
     if accumulation < 1 or len(loader) == 0:
         raise ValueError('Require positive accumulation and nonempty loader')
     model.train()
@@ -95,8 +124,12 @@ def train_epoch(model, loader, optimizer, scheduler, device, accumulation=1, max
             raise FloatingPointError(f'Nonfinite loss at batch {index}')
         (loss / window_size).backward()
         total += loss.item(); count += 1
+        if progress_every and (index+1)%progress_every==0:
+            print(json.dumps({'batch':index+1,'batches':len(loader),'loss':loss.item()}),flush=True)
         if (index + 1) % accumulation == 0 or index + 1 == len(loader):
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm, error_if_nonfinite=True)
+            gradient_norm=torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm, error_if_nonfinite=True)
+            if step_observer is not None:step_observer.before_step(model,optimizer,gradient_norm)
             optimizer.step(); scheduler.step(); optimizer.zero_grad(set_to_none=True)
+            if step_observer is not None:step_observer.after_step(model)
             updates += 1
     return {'mean_microbatch_loss': total / count, 'optimizer_updates': updates}

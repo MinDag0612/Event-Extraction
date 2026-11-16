@@ -2,6 +2,22 @@
 import os
 import random
 import torch
+from src.baselines.text2event.pilot_utils import save_state_atomic
+
+
+def same_training_except_full_stopping(previous, current):
+    """These options affect only the future full phase, never substructure."""
+    keys = {'patience', 'min_delta', 'min_full_epochs'}
+    return ({k: v for k, v in previous.items() if k not in keys}
+            == {k: v for k, v in current.items() if k not in keys})
+
+
+def compatible_checkpoint_signature(previous, current):
+    if previous == current:
+        return True
+    return (previous.get('stage') == current.get('stage') == 'substructure'
+            and set(previous) == set(current) == {'run', 'stage'}
+            and same_training_except_full_stopping(previous['run'], current['run']))
 
 
 def save_checkpoint(path, model, optimizer, scheduler, epoch, best, signature, early_stopping=None):
@@ -10,13 +26,13 @@ def save_checkpoint(path, model, optimizer, scheduler, epoch, best, signature, e
            'torch_rng':torch.get_rng_state(),
            'cuda_rng':torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None}
     if early_stopping is not None: state['early_stopping']=early_stopping.state_dict()
-    temporary=path.with_suffix('.tmp')
-    torch.save(state,temporary);os.replace(temporary,path)
+    return save_state_atomic(path,state)
 
 
 def restore_checkpoint(path,model,optimizer,scheduler,signature,early_stopping=None):
     state=torch.load(path,map_location='cpu',weights_only=False)
-    if state['signature']!=signature: raise ValueError('Resume configuration or data changed')
+    if not compatible_checkpoint_signature(state['signature'],signature):
+        raise ValueError('Resume configuration or data changed')
     if early_stopping is not None:
         if 'early_stopping' not in state: raise ValueError('Checkpoint lacks early stopping state')
         early_stopping.load_state_dict(state['early_stopping'])
@@ -31,6 +47,4 @@ def restore_checkpoint(path,model,optimizer,scheduler,signature,early_stopping=N
 
 def save_best(path, model, epoch, best, signature):
     """Evaluation checkpoint; optimizer/RNG live only in last.pt."""
-    temporary=path.with_suffix('.tmp')
-    torch.save({'model':model.state_dict(),'epoch':epoch,'best':best,'signature':signature},temporary)
-    os.replace(temporary,path)
+    return save_state_atomic(path,{'model':model.state_dict(),'epoch':epoch,'best':best,'signature':signature})

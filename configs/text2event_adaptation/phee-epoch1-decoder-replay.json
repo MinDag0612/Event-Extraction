@@ -1,0 +1,28 @@
+{
+  "dataset": "PHEE",
+  "stage": "substructure",
+  "checkpoint_epoch": 1,
+  "checkpoint_sha256": "a2236cbef33cc9a32378dac528b474a258bf14f598d8f6405a1b746d0d5463ef",
+  "train_sample_selection": "8 random TRAIN indices, seed421, sorted",
+  "dev_sample_selection": "first8 DEV rows, reproduces guarded-pilot failures",
+  "trained": false,
+  "test_used": false,
+  "max_new_tokens": 704,
+  "allow_empty_tree": true,
+  "empty_root_penalty": 0.0,
+  "decoders": {
+    "upstream": "frozen VHE adaptation UpstreamConstraint",
+    "constrained": {
+      "flat": true,
+      "repetition_policy": "source-occurrence",
+      "flat_repeat_limit": 4,
+      "limit_source": "all2853 TRAIN annotations; not DEV or TEST",
+      "original_token_boundaries": true,
+      "completion_budget": true
+    }
+  },
+  "sample_stall_seconds": 120,
+  "io_stall_seconds": 900,
+  "total_run_timeout": null,
+  "guard_note": "Replay is bounded to32 sample-decoder evaluations; no8-invalid streak abort, so both branches can be compared. Stalled-sample watchdog remains active."
+}

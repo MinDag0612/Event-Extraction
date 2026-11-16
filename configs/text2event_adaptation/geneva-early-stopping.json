@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "metric": "full DEV766 AC F1",
+  "patience": 3,
+  "min_delta": 0.001,
+  "min_full_epochs": 5,
+  "max_full_epochs": 30,
+  "scope": "frozen trainer native early stopping, persisted in full/last.pt",
+  "substructure_selection": "all 766 DEV, flat label-surface F1, 5 epochs",
+  "best_checkpoint": "highest full DEV AC independently of patience min_delta",
+  "test": "all 930 TEST only after training completes and selected DEV reproduces"
+}

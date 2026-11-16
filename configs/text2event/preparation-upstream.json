@@ -1,0 +1,50 @@
+{
+  "variant": "Text2Event-mT5 upstream-style substructure then full structure",
+  "model_name": "google/mt5-base",
+  "model_revision": "2eb15465c5dd7f72a8f7984306ad05ebc3dd1e1f",
+  "source_format": "space-joined original tokens",
+  "target_format": "upstream Text2Event tree",
+  "additional_special_tokens": [
+    "<extra_id_0>",
+    "<extra_id_1>"
+  ],
+  "resize_token_embeddings_to_tokenizer": true,
+  "max_source_length": 832,
+  "max_target_length": 704,
+  "generation_max_new_tokens": 704,
+  "truncation": false,
+  "span_policy": "nearest-trigger",
+  "surface_normalizer": "saved tokenizer backend normalizer",
+  "schema_policy": "known event types x known roles, no per-event role restriction",
+  "checkpoint_selection": "DEV AC",
+  "full_training_pipeline_ready": false,
+  "constraint_repetition_policy": "none",
+  "constraint_repetition_limits": {
+    "BKEE": {
+      "event_repeat_limit": 1,
+      "argument_repeat_limit": 1,
+      "train_sha256": "be94f1f1e3cf32d2fe38b411e4a6f66114a112002d34d7edce05872c459560f9"
+    },
+    "GENEVA": {
+      "event_repeat_limit": 1,
+      "argument_repeat_limit": 1,
+      "train_sha256": "320e3e61fb7eba294cfadb3d5459fc7bb0eb9611ff3b5552c89407f91a11661d"
+    },
+    "PHEE": {
+      "event_repeat_limit": 3,
+      "argument_repeat_limit": 2,
+      "train_sha256": "6e08f876b452e6806a5e4515e1b497481d9f4bc3d2023f27c340b1c12e6a130a"
+    },
+    "VHE": {
+      "event_repeat_limit": 8,
+      "argument_repeat_limit": 3,
+      "train_sha256": "758b0170c598b7c452efa15972607de7f3bb925ef6a36fe49ed19ccb5cdf1729"
+    }
+  },
+  "constraint_decoder": "upstream-compatible",
+  "substructure_source_prefix": "span: ",
+  "full_source_prefix": "event: ",
+  "curriculum": "flat type-trigger and role-argument substructure -> full event tree",
+  "upstream_revision": "dbe5a0ae933d639980c8e1f62c141511c12cefd6",
+  "empty_root_penalty": 0.0
+}

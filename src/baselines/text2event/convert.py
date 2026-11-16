@@ -132,3 +132,16 @@ def write_schema(schema: Schema, path):
     import json
     path.write_text('\n'.join(json.dumps(x, ensure_ascii=False) for x in
                              [list(mapping), sorted({r for rs in mapping.values() for r in rs}), mapping]) + '\n')
+
+
+def convert_substructure(row):
+    """Upstream annotate_span layout: flat type-trigger and role-argument leaves.
+
+    All leaves for a sentence share one root, not separate training examples.
+    Preserve annotation multiplicity/order and negative sentences.
+    """
+    leaves = []
+    for event in records(row):
+        leaves.append(f"{OPEN} {event['type']} {event['trigger']} {CLOSE}")
+        leaves.extend(f'{OPEN} {role} {text} {CLOSE}' for role, text in event['roles'])
+    return {'text': ' '.join(row['tokens']), 'event': f"{OPEN} {' '.join(leaves)} {CLOSE}"}
